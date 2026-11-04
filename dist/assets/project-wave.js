@@ -68,10 +68,25 @@
       if(p.images && p.images.some(Boolean)){
         p.images.forEach((img, j)=>{
           if(!img) return;
+          const item=document.createElement('figure');
+          item.className='drawer-gallery-item';
+          item.classList.toggle('is-full-page',!!p.fullWidthImages?.includes(j));
+          item.classList.toggle('preserves-aspect',!!p.preserveImageAspect);
           const slot=document.createElement('div');
           slot.className='drawer-gallery-slot';
-          slot.innerHTML=`<img src="/assets/${img}" alt="${p.title} — image ${j+1}" loading="lazy">`;
-          drawerGallery.appendChild(slot);
+          const image=document.createElement('img');
+          image.src=`/assets/${img}`;
+          image.alt=p.imageCaptions?.[j]||`${p.title} — image ${j+1}`;
+          image.loading='lazy';
+          slot.appendChild(image);
+          item.appendChild(slot);
+          if(p.imageCaptions?.[j]){
+            const caption=document.createElement('figcaption');
+            caption.className='project-image-caption';
+            caption.textContent=p.imageCaptions[j];
+            item.appendChild(caption);
+          }
+          drawerGallery.appendChild(item);
         });
       } else {
         const pile=stations[index]?.querySelector('.station-card-pile');

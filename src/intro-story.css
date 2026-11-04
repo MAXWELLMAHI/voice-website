@@ -1,4 +1,5 @@
 .voice-introduction{position:relative;padding:clamp(72px,12svh,140px) 24px clamp(230px,35svh,420px)}
+.insigh-pannel{display:none!important}
 .voice-introduction .introduction__hold{min-height:60svh;gap:0;padding:0;justify-content:center}
 .voice-introduction .introduction__index{margin-bottom:clamp(28px,4svh,46px)}
 .voice-introduction .introduction__subt{margin-bottom:clamp(26px,4svh,44px)}

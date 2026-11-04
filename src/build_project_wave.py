@@ -1,8 +1,22 @@
 from pathlib import Path
-import html,json,re,shutil
+import html,json,re,shutil,math
 
 
 def esc(value):return html.escape(str(value),quote=True)
+
+
+def sound_wave_svg():
+    paths=[]
+    for layer in range(5):
+        points=[]
+        for x in range(0,1601,4):
+            phase=2*math.pi*x/1600
+            envelope=.2+.8*(.5+.5*math.sin(2*phase-.8))**2
+            oscillation=math.sin(10*phase)+.22*math.sin(20*phase)
+            y=300+(layer-2)*22+(135-layer*12)*envelope*oscillation
+            points.append(f'{x},{y:.2f}')
+        paths.append(f'<path d="M'+ ' L'.join(points)+f'" opacity="{.62-layer*.08:.2f}"/>')
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" fill="none"><g stroke="#194ca9" stroke-width="1.5" stroke-linecap="round">'+''.join(paths)+'</g></svg>'
 
 
 def image_slot(project,index,source,dist):
@@ -17,7 +31,9 @@ def image_slot(project,index,source,dist):
         if not target.exists() or file.stat().st_mtime > target.stat().st_mtime:
             try: shutil.copyfile(file,target)
             except Exception: pass
-        return f'<img src="/assets/{relative.as_posix()}" alt="{esc(project["title"])} — image {index+1}" loading="lazy" decoding="async">'
+        captions=project.get('imageCaptions',[])
+        alt=captions[index] if index<len(captions) else f'{project["title"]} — image {index+1}'
+        return f'<img src="/assets/{relative.as_posix()}" alt="{esc(alt)}" loading="lazy" decoding="async">'
     return f'<div class="wave-card-placeholder"><div class="wave-card-badge"><span>SLOT {index+1:02d}</span></div><div class="wave-card-center-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wave-card-kicker">{esc(project["title"])}</div></div>'
 
 
@@ -27,6 +43,9 @@ def page_shell(title,body):
 
 def build_project_wave(site):
     site=Path(site);source,dist=site/'src',site/'dist'
+    wave=sound_wave_svg()
+    (source/'media/project-soundwave.svg').write_text(wave,encoding='utf-8')
+    (dist/'assets/project-soundwave.svg').write_text(wave,encoding='utf-8')
     projects=json.loads((source/'project-wave.data.json').read_text(encoding='utf-8'))
     assert projects and len({project['id'] for project in projects})==len(projects)
     rows=[];project_dir=dist/'projects';project_dir.mkdir(parents=True,exist_ok=True)
@@ -41,6 +60,7 @@ def build_project_wave(site):
                     except Exception: pass
 
     annotations = {
+        "jaggernaut": "heritage, reimagined for the web",
         "college-finale": "the black book & presentation",
         "create": "marketing campaigns for OpenAI",
         "gallygood": "building my own startup",
@@ -60,7 +80,7 @@ def build_project_wave(site):
         station_num = project.get('num', len(projects) - i)
 
         pile_cards = ''.join([
-            f'<div class="wave-pile-card card-{j}" data-card-index="{j}">{slots[j]}</div>'
+            f'<div class="wave-pile-card card-{j}{" is-full-page" if j in project.get("fullWidthImages",[]) else ""}" data-card-index="{j}">{slots[j]}</div>'
             for j in range(3)
         ])
 
@@ -81,8 +101,17 @@ def build_project_wave(site):
         )
         rows.append(station_html)
 
-        page_slots=''.join(f'<div class="project-detail-slot {"is-empty" if not image else ""}">{slots[j]}</div>' for j,image in enumerate(project['images']))
-        detail=f'<main class="project-detail"><a class="project-detail-back" href="/project-wave.html#station-{esc(project["id"])}">← Back to the score</a><div class="project-detail-kicker">{station_num:02d} / {esc(project["subheading"])}</div><h1>{esc(project["title"])}</h1><p class="project-detail-intro">{esc(project["summary"])}</p><div class="project-detail-slots">{page_slots}</div><div class="project-detail-pending"><h2>The full story, next.</h2><p>{esc(project["work"])}</p><p>More images and project details will be added here.</p></div><a class="project-detail-back" href="/contact.html">Keep the conversation going ↗</a></main>'
+        page_slots=[]
+        for j,image in enumerate(project['images']):
+            full=' is-full-page' if j in project.get('fullWidthImages',[]) else ''
+            natural=' preserves-aspect' if project.get('preserveImageAspect') else ''
+            captions=project.get('imageCaptions',[])
+            caption=f'<figcaption class="project-image-caption">{esc(captions[j])}</figcaption>' if j<len(captions) else ''
+            page_slots.append(f'<figure class="project-detail-item{full}{natural}"><div class="project-detail-slot {"is-empty" if not image else ""}">{slots[j]}</div>{caption}</figure>')
+        page_slots=''.join(page_slots)
+        next_story='' if project.get('complete') else '<h2>The full story, next.</h2>'
+        next_images='' if project.get('complete') else '<p>More images and project details will be added here.</p>'
+        detail=f'<main class="project-detail"><a class="project-detail-back" href="/project-wave.html#station-{esc(project["id"])}">← Back to the score</a><div class="project-detail-kicker">{station_num:02d} / {esc(project["subheading"])}</div><h1>{esc(project["title"])}</h1><p class="project-detail-intro">{esc(project["summary"])}</p><div class="project-detail-slots">{page_slots}</div><div class="project-detail-pending">{next_story}<p>{esc(project["work"])}</p>{next_images}</div><a class="project-detail-back" href="/contact.html">Keep the conversation going ↗</a></main>'
         (project_dir/(project['id']+'.html')).write_text(page_shell(project['title'],detail),encoding='utf-8')
 
     template=(source/'project-wave.template.html').read_text(encoding='utf-8')

@@ -1,5 +1,33 @@
 [
   {
+    "id": "jaggernaut",
+    "title": "Jewellery with a sense of place.",
+    "subheading": "Jaggernaut · Website & campaign design",
+    "summary": "I designed Jaggernaut's jewellery website and campaign visuals with a distinctly South Asian direction. The idea was to make the brand feel premium while staying rooted in its cultural identity. For the imagery, I placed jewellery on sculptural figures and monuments, bringing the pieces into a setting rich in history. Across the website, campaign and social posts, I carried that visual language through the UI, layout and art direction.",
+    "work": "UI/UX · Website Design · Art Direction · Campaign Design · Social Media",
+    "images": [
+      "wave-projects/jaggernaut-website.png",
+      "wave-projects/jaggernaut-campaign.png",
+      "wave-projects/jaggernaut-social-detail.png",
+      "wave-projects/jaggernaut-social-portrait.png",
+      "wave-projects/jaggernaut-social-statue.png"
+    ],
+    "imageCaptions": [
+      "Website UI/UX · complete page",
+      "Campaign visual",
+      "Social campaign · sculptural detail",
+      "Social campaign · jewellery portrait",
+      "Social campaign · full figure"
+    ],
+    "fullWidthImages": [
+      0,
+      1
+    ],
+    "preserveImageAspect": true,
+    "complete": true,
+    "num": 11
+  },
+  {
     "id": "college-finale",
     "title": "Finally, College.",
     "subheading": "Now · College Finale",

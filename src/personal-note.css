@@ -1,0 +1,78 @@
+.voice-personal-note { z-index: 200; }
+.trg-note {
+  position: fixed;
+  z-index: 120;
+  top: 24px;
+  right: 24px;
+  padding: 7px 10px 7px 16px;
+  border: 1px solid #194ca92b;
+  border-radius: 999px;
+  background: #fff2d4e6;
+  color: #194ca9;
+  --color: #194ca9;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  animation: noteInvitationGlow 3.2s ease-in-out infinite;
+}
+.trg-note .trg-note__hold { display: flex; align-items: center; gap: 8px; }
+.trg-note .trg-note__text { color: inherit; font: 400 9px/1.4 var(--font-ui); letter-spacing: .1em; }
+.trg-note .trg-note__text,
+.trg-note .trg-note__text * { color: inherit !important; }
+.trg-note .trg-note__svg { display: block; width: 36px; height: 36px; color: inherit; }
+.voice-note-star { display: block; width: 100%; height: 100%; overflow: visible; transition: transform .45s cubic-bezier(.2,.8,.25,1.4); }
+.note-star-glyph { fill: #c58b31; transform-origin: 26px 26px; animation: noteStarGlow 2.8s ease-in-out infinite; }
+.trg-note:hover .voice-note-star,
+.trg-note:focus-visible .voice-note-star { transform: rotate(22deg) scale(1.14); }
+.trg-note:active .voice-note-star { transform: rotate(72deg) scale(.9); }
+body.is-note-open .trg-note .voice-note-star { transform: rotate(180deg) scale(1.2); }
+.trg-note:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+body.voice-active .trg-note { top: 96px; right: 28px; background: #071626b3; color: #fff0ce; --color: #fff0ce; border-color: #fff0ce66; }
+body.voice-active .note-star-glyph { fill: #ffdc91; }
+@keyframes noteStarGlow {
+  0%,100% { opacity: .78; filter: drop-shadow(0 0 2px #e5b45066); transform: scale(.94); }
+  50% { opacity: 1; filter: drop-shadow(0 0 8px #e5b450b3); transform: scale(1.06); }
+}
+@keyframes noteInvitationGlow {
+  0%,100% { box-shadow: 0 0 0 0 #e5b45000; }
+  50% { box-shadow: 0 0 22px 2px #e5b45030; }
+}
+@media (max-width: 600px) {
+  .trg-note { top: 18px; right: 18px; padding: 6px 8px 6px 12px; }
+  body.voice-active .trg-note { top: 84px; right: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trg-note,.note-star-glyph { animation: none; }
+  .voice-note-star { transition: none; }
+}
+.voice-note-player { position: relative; width: 100%; height: 100%; background: #080e19; }
+.voice-note-player .voice-note-video { position: static; display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: auto; }
+.voice-personal-note .note__content { height: 100svh; }
+.voice-personal-note .note__texts {
+  height: 100svh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #2451b5 #f2e6c8;
+  padding: 76px clamp(28px, 4vw, 72px) 60px;
+}
+.voice-personal-note .note__texts::-webkit-scrollbar { width: 8px; }
+.voice-personal-note .note__texts::-webkit-scrollbar-thumb { background: #2451b5; border-radius: 8px; }
+.voice-personal-note .note__title .note__descr { font: 400 clamp(30px, 3.2vw, 48px)/1.05 var(--font-display); font-family: var(--font-display) !important; letter-spacing: -.035em; }
+.voice-personal-note .note__descr__parags { padding-left: 0; margin-top: 32px; }
+.voice-personal-note .voice-note-letter { font: 400 16px/1.8 var(--font-ui); max-width: 52ch; }
+.voice-personal-note .voice-note-letter strong { font-weight: 600 !important; color: inherit; }
+.voice-personal-note .voice-note-quote { font: 400 clamp(27px, 2.5vw, 38px)/1.2 var(--font-display) !important; letter-spacing: -.025em; }
+.voice-personal-note .voice-note-signature { font: 400 23px/1.8 var(--font-note) !important; }
+.voice-personal-note .voice-note-tagline { font: 400 12px/1.8 var(--font-note); color: inherit; }
+.voice-personal-note .note__list { padding-left: 0; margin-top: 36px; }
+.voice-personal-note .note__close { position: fixed; z-index: 2; top: 18px; right: 24px; padding: 12px 22px; min-height: 44px; }
+@media (max-width: 900px) {
+  .voice-personal-note { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #2451b5 #f2e6c8; }
+  .voice-personal-note::-webkit-scrollbar { width: 8px; }
+  .voice-personal-note::-webkit-scrollbar-thumb { background: #2451b5; border-radius: 8px; }
+  .voice-personal-note .note__hold { height: auto; padding-bottom: 0; }
+  .voice-personal-note .note__content { height: auto; flex-direction: column; }
+  .voice-personal-note .note__video__wrap { width: 100%; height: 42svh; padding: 24px; border-right: none; border-bottom: 1px solid currentColor; overflow: hidden; }
+  .voice-personal-note .bunny-player { height: 100%; }
+  .voice-personal-note .note__texts { width: 100%; height: auto; overflow: visible; padding: 40px 24px 70px; }
+}
