@@ -1,8 +1,12 @@
-VOICE-website/
 node_modules/
-.vercel/
-.system_generated/
 __pycache__/
-*.pyc
+*.py[cod]
+.cache/
+.vercel/
 .venv/
-*.tmp
+.system_generated/
+VOICE-website/
+review/*.tar.gz
+review/*.tar
+review/*.tgz
+review/*.tmp

@@ -10,9 +10,9 @@ small = ImageFont.truetype('C:/Windows/Fonts/arial.ttf', 15)
 draw.text((40, 25), 'Life in Mumbai', font=title, fill='#f4ead4')
 draw.text((42, 83), 'Landscape depth study / three moments from the scroll journey', font=body, fill='#a9bcba')
 frames = [
-    ('mumbai-sleep-well.jpg', '01 / ARRIVE', 'Sleep well'),
-    ('mumbai-respect-your-body.jpg', '02 / GO DEEPER', 'Respect your body'),
-    ('mumbai-dont-pull-up.jpg', '03 / FURTHER IN', "Don't pull up"),
+    ('mumbai-city.jpg', '01 / ARRIVE', 'Mumbai never slows down.'),
+    ('mumbai-curiosity.jpg', '02 / GO DEEPER', 'Neither does my curiosity.'),
+    ('mumbai-journey.jpg', '03 / FURTHER IN', 'Look where it took me.'),
 ]
 for i, (name, label, phrase) in enumerate(frames):
     x = 40 + i * 580

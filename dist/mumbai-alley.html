@@ -26,10 +26,10 @@
   <img class="fallback" src="/assets/mumbai/teal-urban-canyon.png" width="1672" height="941" alt="A wide painted Mumbai alley, warm windows and balconies opening onto a deep teal night">
   <canvas id="alley-canvas" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div>
   <div class="annotation">Life in Mumbai</div><div class="coordinates">The city stays awake.<br>You don't have to.</div>
-  <div class="fallback-copy" aria-hidden="true"><h2 id="fallback-phrase">Sleep well</h2></div>
+  <div class="fallback-copy" aria-hidden="true"><h2 id="fallback-phrase">Mumbai never slows down.</h2></div>
   <div class="journey-hint">SCROLL TO GO DEEPER</div>
   <div class="chapter" aria-hidden="true"><span id="phase-index">01</span><div class="chapter-track"><div class="chapter-fill"></div></div><span class="chapter-total">/ 03</span></div>
-  <div class="accessible-copy"><h1>Life in Mumbai</h1><p>Sleep well. Respect your body. Don't pull up.</p></div>
+  <div class="accessible-copy"><h1>Life in Mumbai</h1><p>Mumbai never slows down. Neither does my curiosity. Look where it took me.</p></div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script>
@@ -38,11 +38,11 @@
   const EMBED=new URLSearchParams(location.search).has('embed'),REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Named stills make the requested visual storyboard reproducible without
   // changing the embedded journey or depending on screenshot timing.
-  const stillProgress=EMBED?undefined:({sleep:.19,respect:.51,deeper:.85})[new URLSearchParams(location.search).get('still')];
+  const stillProgress=EMBED?undefined:({city:.19,curiosity:.51,journey:.85,sleep:.19,respect:.51,deeper:.85})[new URLSearchParams(location.search).get('still')];
   document.body.classList.toggle('embedded',EMBED||typeof stillProgress==='number');
   const stage=document.getElementById('alley-stage'),canvas=document.getElementById('alley-canvas');
   const fallbackPhrase=document.getElementById('fallback-phrase'),phaseIndex=document.getElementById('phase-index'),fill=document.querySelector('.chapter-fill');
-  const words=['Sleep well','Respect your body',"Don't pull up"],target={progress:0,x:0,y:0},motion={progress:0,x:0,y:0};
+  const words=['Mumbai never slows down.','Neither does my curiosity.','Look where it took me.'],target={progress:0,x:0,y:0},motion={progress:0,x:0,y:0};
   const ART_ASPECT=1672/941,FOV=48,TRAVEL=38,layers=[],phrases=[];
   let active=!EMBED,renderer,scene,camera,lastTime=0,lastRendered=0,phase=-1,dirty=true;
   const send=data=>{if(EMBED)parent.postMessage({mumbaiAlley:true,...data},location.origin);};
@@ -61,9 +61,9 @@
     return 9;
   }
   const beats=[
-    {text:'Sleep well',lines:['Sleep well'],depth:20,begin:.035,peak:.19,end:.32,width:.54},
-    {text:'Respect your body',lines:['Respect','your body'],depth:30,begin:.36,peak:.51,end:.66,width:.58},
-    {text:"Don't pull up",lines:["Don't",'pull up'],depth:49,begin:.70,peak:.85,end:1,width:.54}
+    {text:words[0],lines:['Mumbai never','slows down.'],depth:20,begin:.035,peak:.19,end:.32,width:.54},
+    {text:words[1],lines:['Neither does','my curiosity.'],depth:30,begin:.36,peak:.51,end:.66,width:.58},
+    {text:words[2],lines:['Look where','it took me.'],depth:49,begin:.70,peak:.85,end:1,width:.54}
   ];
   function setProgress(value){
     target.progress=clamp(value);dirty=true;
@@ -102,7 +102,7 @@
   }
   function fallback(){stage.classList.add('fallback-mode');stage.dataset.fallback='true';send({ready:true});}
   async function init(){
-    if(REDUCED){stage.classList.add('reduced');fallbackPhrase.innerHTML='Sleep well<br>Respect your body<br>Don’t pull up';stage.dataset.ready='reduced';send({ready:true});return;}
+    if(REDUCED){stage.classList.add('reduced');fallbackPhrase.innerHTML=words.join('<br><br>');stage.dataset.ready='reduced';send({ready:true});return;}
     try{
       if(typeof THREE==='undefined')throw new Error('Scene library unavailable');
       scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(FOV,innerWidth/innerHeight,.1,300);
