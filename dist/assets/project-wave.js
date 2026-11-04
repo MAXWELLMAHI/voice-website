@@ -9,17 +9,10 @@
   const progressFill=document.getElementById('wave-progress-fill');
   const contact=document.getElementById('contact');
 
-  // HUD elements
-  const hudIndex=document.getElementById('hud-index');
-  const hudKicker=document.getElementById('hud-kicker');
-  const hudTitle=document.getElementById('hud-title');
-  const hudSummary=document.getElementById('hud-summary');
-  const hudWorkTags=document.getElementById('hud-work-tags');
-  const hudOpenBtn=document.getElementById('hud-open-btn');
-
   // Drawer / Modal elements
   const drawer=document.getElementById('wave-project-drawer');
   const drawerClose=document.getElementById('drawer-close');
+  const drawerContent=document.getElementById('drawer-content');
   const drawerIndex=document.getElementById('drawer-index');
   const drawerSubheading=document.getElementById('drawer-subheading');
   const drawerTitle=document.getElementById('drawer-title');
@@ -35,19 +28,13 @@
   let currentIndex=0;
   let isHoverLocked=false;
   let hoverTimeout=null;
+  let previousBodyOverflow=null;
 
   const clamp=(val,min=0,max=1)=>Math.max(min,Math.min(max,val));
 
-  function updateHUD(index){
+  function updateTrackLabel(index){
     const p=projects[index];if(!p)return;
     const numStr=String(p.num || (projects.length - index)).padStart(2,'0');
-    if(hudIndex)hudIndex.textContent=`${numStr} / ${String(projects.length).padStart(2,'0')}`;
-    if(hudKicker)hudKicker.textContent=p.subheading;
-    if(hudTitle)hudTitle.textContent=p.title;
-    if(hudSummary)hudSummary.textContent=p.summary;
-    if(hudWorkTags){
-      hudWorkTags.innerHTML=p.work.split('·').map(w=>`<span class="hud-tag">${w.trim()}</span>`).join('');
-    }
     if(playheadLabel)playheadLabel.textContent=`TRACK ${numStr}`;
   }
 
@@ -57,7 +44,7 @@
     stations.forEach((st,i)=>{
       st.classList.toggle('is-active',i===index);
     });
-    updateHUD(index);
+    updateTrackLabel(index);
     if(fromHover){
       isHoverLocked=true;
       clearTimeout(hoverTimeout);
@@ -103,7 +90,16 @@
     }catch(err){
       drawer.setAttribute('open','');
     }
+    if(drawerContent)drawerContent.scrollTop=0;
+    if(previousBodyOverflow===null)previousBodyOverflow=document.body.style.overflow;
     document.body.style.overflow='hidden';
+  }
+
+  function restorePageScroll(){
+    if(previousBodyOverflow!==null){
+      document.body.style.overflow=previousBodyOverflow;
+      previousBodyOverflow=null;
+    }
   }
 
   function closeDrawer(){
@@ -113,19 +109,20 @@
     }catch(err){
       drawer.removeAttribute('open');
     }
-    document.body.style.overflow='';
+    restorePageScroll();
   }
 
   if(drawerClose)drawerClose.addEventListener('click',closeDrawer);
   if(drawer){
+    drawer.addEventListener('close',restorePageScroll);
+    drawer.addEventListener('cancel',e=>{
+      e.preventDefault();
+      closeDrawer();
+    });
     drawer.addEventListener('click',e=>{
       if(e.target===drawer)closeDrawer();
     });
   }
-  if(hudOpenBtn){
-    hudOpenBtn.addEventListener('click',()=>openDrawer(currentIndex));
-  }
-
   // Station & Card Interactions
   stations.forEach((st,index)=>{
     // Hover: immediately reveal information & activate pile

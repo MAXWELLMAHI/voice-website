@@ -33,7 +33,7 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 | `src/daily-loop.data.json` | Seventeen confirmed routine activities and overnight times |
 | `src/daily-loop.template.html`, `src/daily-loop.js`, `src/daily-loop.css` | Scroll-driven clock, independent hands and running character |
 | `src/project-wave.data.json` | Ten biography milestones, hover copy and three image slots per milestone |
-| `src/project-wave.template.html`, `src/project-wave.js`, `src/project-wave.css` | Vertical five-strip project timeline and click spotlight transition |
+| `src/project-wave.template.html`, `src/project-wave.js`, `src/project-wave.css` | Scroll-driven project score, image piles and scrollable project stories |
 | `src/contact.template.html` | Final contact section and contact page |
 | `src/assemble.py` | Builds the current hero and integrates it into the complete website |
 | `src/prepare_fonts.py` | Downloads the font files and updates site-wide typography rules |
@@ -55,6 +55,8 @@ The minimum-duration circle now uses the supplied transparent gold clock and run
 
 Cormorant SC is used for headings and display statements, ABeeZee for body text and interfaces, and Borel for handwritten notes. The video retains its full 55.1-second timeline and audio; only its existing black borders were cropped for the web version. The original large recording remains in Downloads.
 
+The site logo uses the supplied full-resolution transparent `src/media/navy-cream-arched-emblem.png`, copied unchanged from “Navy and Cream Arched Emblem.png”. The existing logo wrapper, 4.8-second floating motion, 3.6-second glow, hover and press animations retain their original CSS and timing. The same image is used by the footer logo, legacy SVG asset wrapper and browser icon. The original moon loader remains intact.
+
 ## Dependencies and source notes
 
 The hero loads pinned Three.js r128 and GSAP / ScrollTrigger 3.12.5 from jsDelivr. The integrated site serves its fonts locally. The original site's separate note-panel film is an external HLS dependency. Internet access is needed for those external dependencies.
@@ -73,8 +75,10 @@ Reduced-motion settings show the still landscape with all three phrases and a sh
 
 `/daily-loop.html` opens the scroll-driven routine directly, without an additional entrance. `src/daily-loop.data.json` contains the user's seventeen activities from 9:00 AM through the following 9:00 AM. Each activity has a semantic scroll segment; the displayed time interpolates across that activity's actual duration. The character and gold dial complete one circuit, and the independent hour and minute hands follow the real elapsed time. Scroll reverses the motion. Reduced-motion users receive the full schedule as a readable list.
 
-## Vertical project timeline
+## Project score and stories
 
-`/project-wave.html` opens the vertical timeline directly. It starts with engineering in 2023 and follows the ten supplied milestones. Each entry contains exactly five horizontal wave strips and at least three independent image columns. Hover reveals the title, subheading, short intro and work summary without changing the artwork. Clicking highlights all five strips, dims the surrounding page briefly, then opens `/projects/<id>.html`. On mobile the summary is visible below the strips. The final milestone is followed immediately by contact; older sleep-guide chapters remain hidden as compatibility hooks for the original runtime.
+`/project-wave.html` opens the current musical project score directly. The centered “My work, in motion.” heading and tagline stay inside the sticky desktop viewport as scrolling moves through the image piles. Mobile visitors can swipe the project track. The oversized floating summary panel has been removed; engineering remains a timeline entry. Clicking or pressing Enter on a pile opens its full story in a modal, with a link to `/projects/<id>.html`. Contact immediately follows the score; older sleep-guide chapters remain hidden as compatibility hooks for the original runtime.
 
-Add images using `src/media/timeline/README.md`. All thirty initial image slots are empty intentionally. No generated illustration is presented as a photograph of the user's experiences. The earlier concept artwork and its exact generation prompts remain in `src/media/wave-projects/` for optional use. Replace copy, image paths and ordering in `src/project-wave.data.json`, then rebuild. Project pages are generated from the same data. Contact details remain explicitly pending until supplied.
+Project stories fit within the available viewport and have a visible vertical scrollbar. Their close button stays outside the scrolling content. Wheel, touch and keyboard scrolling are contained inside the story, including when the main site’s Lenis controller is active. Escape closes the modal and restores page scrolling. Each story starts at the top when opened.
+
+The supplied photographs and project copy live in `src/media/wave-projects/` and `src/project-wave.data.json`. Every milestone has at least three image slots; stories show all supplied images. Replace copy, paths or ordering in the data file, then rebuild. Project pages use the same data. Earlier generated concept artwork and its prompts remain in the media folder for optional use. Contact details remain pending until supplied.

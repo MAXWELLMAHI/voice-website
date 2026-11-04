@@ -40,10 +40,10 @@ h=h.replace('</head>','<style id="voice-intro-story">'+(ROOT/'intro-story.css').
 h=h.replace('</head>','<style id="voice-stats-clock">'+(ROOT/'stats-clock.css').read_text(encoding='utf-8')+'</style></head>')
 clock_asset=DIST/'assets'/'clockwork-runner.png'
 clock_asset.write_bytes((ROOT/'media'/'clockwork-runner.png').read_bytes())
-for f in ('voice-brand-medallion.png','voice-brand-medallion.webp'):
+for f in ('navy-cream-arched-emblem.png','voice-brand-medallion.png','voice-brand-medallion.webp'):
     src_f=ROOT/'media'/f
     if src_f.exists():(DIST/'assets'/f).write_bytes(src_f.read_bytes())
-svg_wrapper='<svg width="463" height="636" viewBox="0 0 745 1024" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><image href="/assets/voice-brand-medallion.png" width="745" height="1024"/></svg>'
+svg_wrapper='<svg width="463" height="636" viewBox="0 0 1070 1470" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><image href="/assets/navy-cream-arched-emblem.png" width="1070" height="1470"/></svg>'
 (DIST/'assets'/'3ec1ac10f8-69074c7847f39bcb35373842_Logo.svg').write_text(svg_wrapper,encoding='utf-8')
 h=h.replace('I hope you find it helpful. Thank you 😊','<span class="handwritten-note">I hope you find it helpful. Thank you 😊</span>')
 h=h.replace('<body ', '<body ',1)
