@@ -1,0 +1,75 @@
+<div class="daily-loop-stage" id="clockwork-runner" aria-label="The daily loop: a scroll through one day in Mumbai">
+  <div class="loop-original-background" aria-hidden="true">__ORIGINAL_BACKGROUND__</div>
+  <div class="loop-night-wash" aria-hidden="true"></div>
+  <div class="loop-dawn-glow" aria-hidden="true"></div>
+  <header class="loop-caption">
+    <div class="loop-kicker">01 <span>—</span> THE DAILY LOOP</div>
+    <div class="loop-when"><time id="loop-time" datetime="09:00">9:00 AM</time><span class="loop-time-divider"></span><span id="loop-location">Home</span><span id="loop-next-day" hidden>Next day</span></div>
+    <div class="loop-message-mask"><h2 id="loop-message">He’s waking up and getting ready.</h2></div>
+    <p id="loop-caption-note">System booting. Slowly.</p>
+  </header>
+  <a class="loop-skip" href="#mumbai-alley">Skip this day <span aria-hidden="true">↘</span></a>
+  <div class="loop-world" aria-hidden="true">
+    <svg class="loop-clock-svg" viewBox="-350 -350 700 700" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="loop-ivory" cx="40%" cy="32%" r="78%"><stop offset="0" stop-color="#fff8ed"/><stop offset=".68" stop-color="#f5e8d7"/><stop offset="1" stop-color="#dbbb94"/></radialGradient>
+        <linearGradient id="loop-gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#73441f"/><stop offset=".25" stop-color="#d59445"/><stop offset=".48" stop-color="#ffe1a5"/><stop offset=".7" stop-color="#bf7c32"/><stop offset="1" stop-color="#754520"/></linearGradient>
+        <linearGradient id="loop-hand" x1="0" x2="1"><stop stop-color="#5e421f"/><stop offset=".48" stop-color="#ad7434"/><stop offset=".5" stop-color="#efd09a"/><stop offset="1" stop-color="#bd873e"/></linearGradient>
+        <linearGradient id="loop-shirt" x1="0" x2="1"><stop stop-color="#a8bec1"/><stop offset="1" stop-color="#42616d"/></linearGradient>
+        <clipPath id="loop-plate-clip"><circle r="266"/></clipPath>
+        <filter id="loop-clock-shadow" x="-25%" y="-25%" width="150%" height="160%"><feDropShadow dx="0" dy="15" stdDeviation="12" flood-color="#000a35" flood-opacity=".24"/></filter>
+        <filter id="loop-hand-shadow" x="-100%" y="-100%" width="300%" height="300%"><feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#7c5434" flood-opacity=".32"/></filter>
+        <symbol id="loop-icon-home" viewBox="0 0 90 65"><path d="M10 28 44 5 79 28" fill="#a74935" stroke="#633c2b" stroke-width="2"/><path d="M17 28h55v33H17z" fill="#c78355"/><path d="M38 40h14v21H38z" fill="#644b35"/><path d="M24 35h10v12H24zm34 0h9v12h-9z" fill="#f4ca6f"/><path d="M7 62h77" stroke="#6f6245" stroke-width="3"/><path d="M65 9v14" stroke="#9c543a" stroke-width="6"/></symbol>
+        <symbol id="loop-icon-train" viewBox="0 0 90 65"><path d="M7 20q0-8 8-8h60q9 0 9 9v26H7z" fill="#f0e4c6" stroke="#5c716e" stroke-width="2"/><path d="M7 38h77v7H7z" fill="#8f4837"/><path d="M14 19h15v12H14zm22 0h15v12H36zm22 0h17v12H58z" fill="#34727c"/><circle cx="23" cy="48" r="5" fill="#39464a"/><circle cx="68" cy="48" r="5" fill="#39464a"/><path d="M2 55h87M9 60h72" stroke="#d8b66f" stroke-width="2"/><path d="m36 10 9-7 9 7" fill="none" stroke="#cca15c" stroke-width="2"/></symbol>
+        <symbol id="loop-icon-metro" viewBox="0 0 90 65"><path d="M8 50h74M16 50V12h58v38" fill="none" stroke="#bd9452" stroke-width="4"/><path d="M21 21q0-7 7-7h34q8 0 8 8v25H21z" fill="#dddcc9"/><path d="M27 22h13v12H27zm20 0h16v12H47z" fill="#367184"/><path d="M21 39h49v7H21z" fill="#277b80"/><circle cx="32" cy="48" r="4" fill="#39464a"/><circle cx="60" cy="48" r="4" fill="#39464a"/><path d="M25 7h41" stroke="#b94f42" stroke-width="5"/></symbol>
+        <symbol id="loop-icon-scooter" viewBox="0 0 90 65"><circle cx="22" cy="49" r="11" fill="#273f47"/><circle cx="22" cy="49" r="5" fill="#d8b983"/><circle cx="69" cy="49" r="11" fill="#273f47"/><circle cx="69" cy="49" r="5" fill="#d8b983"/><path d="M20 44h29l12-21h9l-1 22H43L31 31H17" fill="none" stroke="#be7341" stroke-width="7" stroke-linejoin="round"/><path d="m59 22-5-10h13" fill="none" stroke="#546b6c" stroke-width="4"/><path d="M28 30h19" stroke="#363d41" stroke-width="7" stroke-linecap="round"/></symbol>
+        <symbol id="loop-icon-office" viewBox="0 0 90 65"><path d="M18 9h55v53H18z" fill="#547b79"/><path d="M14 8h64" stroke="#d4aa68" stroke-width="5"/><path d="M25 18h10v8H25zm18 0h10v8H43zm18 0h7v8h-7zM25 33h10v8H25zm18 0h10v8H43zm18 0h7v8h-7z" fill="#e9c17c"/><path d="M39 49h16v13H39z" fill="#d5b38a"/><path d="M7 63h77" stroke="#ad8657" stroke-width="3"/></symbol>
+        <symbol id="loop-icon-research" viewBox="0 0 90 65"><path d="M14 10h46v46H14z" fill="#d5c9ac" transform="rotate(-9 37 33)"/><path d="M25 7h44v49H25z" fill="#f9edd3"/><path d="M33 17h28m-28 8h23m-23 8h17m-17 8h24" stroke="#7a9390" stroke-width="3"/><circle cx="64" cy="40" r="12" fill="#377a7e" fill-opacity=".3" stroke="#b58643" stroke-width="4"/><path d="m72 49 11 11" stroke="#8e6235" stroke-width="5" stroke-linecap="round"/></symbol>
+        <symbol id="loop-icon-meeting" viewBox="0 0 90 65"><path d="M15 35h61v9H15z" fill="#bb8951"/><path d="M24 44v16m43-16v16" stroke="#76573b" stroke-width="4"/><circle cx="24" cy="15" r="8" fill="#c38a60"/><path d="M11 35V25q13-11 26 0v10" fill="#507e83"/><circle cx="66" cy="15" r="8" fill="#b87950"/><path d="M53 35V25q13-11 26 0v10" fill="#b45e45"/><path d="M39 4h17v12H45l-6 4z" fill="#eee0b9"/></symbol>
+        <symbol id="loop-icon-lunch" viewBox="0 0 90 65"><ellipse cx="43" cy="37" rx="27" ry="22" fill="#e4c88c" stroke="#b18e50" stroke-width="3"/><ellipse cx="43" cy="37" rx="19" ry="15" fill="#f5e8ca"/><path d="M30 38q12-18 26 0-11 14-26 0" fill="#b97040"/><path d="M34 28q10 4 17 0" stroke="#6f8f61" stroke-width="5"/><path d="M8 15v37m-4-37v13h8V15m65 1v36m0-36q13 11 0 24" fill="none" stroke="#b28b50" stroke-width="3"/></symbol>
+        <symbol id="loop-icon-documents" viewBox="0 0 90 65"><path d="M11 20h49v39H11z" fill="#b78856" transform="rotate(-9 35 40)"/><path d="M22 12h49v43H22z" fill="#d1d3b7" transform="rotate(5 46 34)"/><path d="M31 5h43v49H31z" fill="#f6e5c4"/><path d="M39 16h26m-26 8h26m-26 8h20m-20 8h24" stroke="#71918a" stroke-width="3"/></symbol>
+        <symbol id="loop-icon-campaign" viewBox="0 0 90 65"><path d="M13 10h36v48H13z" fill="#c36b47" transform="rotate(-9 30 34)"/><path d="M37 6h39v51H37z" fill="#e6ce97" transform="rotate(8 56 32)"/><path d="m25 30 21-11v28L25 38z" fill="#f7dfab"/><path d="m28 37 5 17" stroke="#5d6b61" stroke-width="6"/><circle cx="58" cy="26" r="11" fill="#4b8683"/><path d="M47 44h23m-19 6h15" stroke="#ab653f" stroke-width="3"/></symbol>
+        <symbol id="loop-icon-design" viewBox="0 0 90 65"><path d="M11 8h68v47H11z" fill="#edddbc" stroke="#b18a51" stroke-width="2"/><path d="M17 15h24v23H17z" fill="#518d88"/><path d="m21 32 8-13 9 13z" fill="#e0c797"/><path d="M47 16h23m-23 8h18" stroke="#9c7954" stroke-width="3"/><path d="M19 45h11v6H19z" fill="#bc5e43"/><path d="M33 45h11v6H33z" fill="#d5a959"/><path d="M47 45h11v6H47z" fill="#45817f"/><path d="m64 56 13-24 5 3-13 24-7 5z" fill="#ae7944"/></symbol>
+        <symbol id="loop-icon-laptop" viewBox="0 0 90 65"><path d="M20 10h51v36H20z" fill="#537678" stroke="#344d56" stroke-width="3"/><path d="M26 16h39v24H26z" fill="#bcd0bf"/><path d="m32 24 6 6-6 5m12 0h13" fill="none" stroke="#63827a" stroke-width="2"/><path d="m20 46-11 9h73l-11-9z" fill="#c8b496"/><path d="M31 55h28" stroke="#8a816e" stroke-width="3"/><path d="M5 60h80" stroke="#b18b55" stroke-width="3"/></symbol>
+        <symbol id="loop-icon-moon" viewBox="0 0 90 65"><path d="M58 6a25 25 0 1 0 17 43A25 25 0 0 1 58 6" fill="#dfc38a"/><path d="m19 10 2 6 6 2-6 2-2 6-2-6-6-2 6-2zm52 8 1 4 5 1-5 1-1 5-1-5-4-1 4-1z" fill="#eddaad"/></symbol>
+        <symbol id="loop-icon-bed" viewBox="0 0 90 65"><path d="M12 23v35m64-20v20" stroke="#93643a" stroke-width="5"/><path d="M14 34h61v17H14z" fill="#54878a"/><path d="M16 25h17v12H16z" fill="#f0dfbb"/><path d="M35 30q17-12 37 1v12H35z" fill="#b36c4b"/><path d="M62 6a11 11 0 1 0 12 17A12 12 0 0 1 62 6" fill="#dec58d"/></symbol>
+      </defs>
+      <ellipse cy="278" rx="200" ry="14" fill="#00123b" opacity=".2"/>
+      <g id="loop-dial" filter="url(#loop-clock-shadow)">
+        <image href="/assets/clockwork-runner.png" x="-312" y="-337.5" width="627" height="627" clip-path="url(#loop-plate-clip)"/>
+        <circle r="238" fill="url(#loop-ivory)"/>
+        <circle r="236" fill="none" stroke="#b98b52" stroke-opacity=".5" stroke-width="1"/>
+        <g class="loop-clock-marks">__CLOCK_MARKS__</g>
+        <g class="loop-clock-numbers">__CLOCK_NUMBERS__</g>
+      </g>
+      <g class="loop-scene-props">__SCENE_PROPS__</g>
+      <g filter="url(#loop-hand-shadow)">
+        <g id="loop-hour-hand"><path d="M-9 13-8-91 0-146 8-91 9 13z" fill="url(#loop-hand)"/><path d="M0-146V13" stroke="#efcb88" stroke-width="1" opacity=".65"/></g>
+        <g id="loop-minute-hand"><path d="M-6 18-5-145 0-207 5-145 6 18z" fill="url(#loop-hand)"/><path d="M0-207V18" stroke="#f2d9a6" stroke-width="1" opacity=".7"/></g>
+        <circle r="16" fill="url(#loop-gold)" stroke="#f6dca7" stroke-width="1.5"/><circle r="11" fill="#c5904b"/>
+      </g>
+      <circle class="loop-orbit-line" r="279"/>
+      <circle id="loop-orbit-progress" r="279" pathLength="1" transform="rotate(-90)"/>
+      <g class="loop-route-markers">__ROUTE_MARKERS__</g>
+      <g id="loop-runner-orbit"><g transform="translate(0,-269)"><g id="loop-runner-upright"><g id="loop-runner-facing"><ellipse id="loop-runner-shadow" cy="2" rx="14" ry="3" fill="#604326" opacity=".35"/>
+        <g id="loop-runner-body">
+          <g id="loop-back-leg" transform="translate(-3,-27)"><path d="M0 0-13 15-7 28" fill="none" stroke="#243d4a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="m-8 28 12 1" stroke="#d4cbb9" stroke-width="6" stroke-linecap="round"/></g>
+          <g id="loop-back-arm" transform="translate(-2,-48)"><path d="m0 0-13 12-8 10" fill="none" stroke="#627c84" stroke-width="7" stroke-linecap="round"/><path d="m-8 10 2 3" stroke="#bb8c68" stroke-width="6" stroke-linecap="round"/></g>
+          <path d="M-10-52q-8 8-7 22l8 2 6-21z" fill="#a55d3e" stroke="#70452e" stroke-width="1.2"/>
+          <path d="m-6-53 14 1 4 26-20 2-2-17z" fill="url(#loop-shirt)" stroke="#3f5965" stroke-width="1.2"/>
+          <path d="M-4-50-9-29" stroke="#d4b17d" stroke-width="2" opacity=".9"/>
+          <g id="loop-front-leg" transform="translate(4,-26)"><path d="M0 0 12 13 8 27" fill="none" stroke="#344d57" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="m8 27 12 1" stroke="#e1d6bf" stroke-width="6" stroke-linecap="round"/></g>
+          <path d="M3-60v9" stroke="#b98561" stroke-width="6"/>
+          <path d="M-2-69q12-4 14 7l-2 9-8 1-5-8z" fill="#c18c66"/>
+          <path d="M-5-64q-4-14 11-13 10 2 9 11l-7-5-6 7z" fill="#302c29"/><path d="M11-62h3l-1 3" fill="#c18c66"/>
+          <g id="loop-front-arm" transform="translate(6,-48)"><path d="M0 0 12 8 19-3" fill="none" stroke="#849c9e" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="m19-3 2-3" stroke="#c7926b" stroke-width="6" stroke-linecap="round"/></g>
+        </g>
+      </g></g></g></g>
+    </svg>
+  </div>
+  <footer class="loop-footer"><div class="loop-stop-counter"><span id="loop-stop-index">01</span><span class="loop-count-rule"></span><span>17</span></div><nav class="loop-stop-nav" aria-label="Jump to a moment in the day">__STOP_BUTTONS__</nav><div class="loop-scroll-hint">SCROLL THROUGH THE DAY <span aria-hidden="true">↓</span></div></footer>
+  <p class="loop-announcer" id="loop-announcer" aria-live="polite" aria-atomic="true"></p>
+</div>
+<ol class="loop-transcript">__TRANSCRIPT__</ol>
+<script type="application/json" id="daily-loop-data">__DAILY_DATA__</script>
+<noscript><style>.daily-loop-section{height:auto!important}.daily-loop-stage{position:relative!important}.loop-transcript{display:block!important;position:relative!important;clip-path:none!important;width:auto!important;height:auto!important}.loop-stop-nav,.loop-scroll-hint{display:none!important}</style></noscript>

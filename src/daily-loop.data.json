@@ -1,0 +1,19 @@
+[
+  {"id":"wake","label":"Wake up & get ready","message":"He’s waking up and getting ready.","caption":"System booting. Slowly.","location":"Home","start":540,"end":570,"icon":"home"},
+  {"id":"local","label":"Local train","message":"He’s catching the local train.","caption":"Ideas arrive before the train does.","location":"Mumbai local","start":570,"end":610,"icon":"train"},
+  {"id":"metro","label":"Metro","message":"He’s switching to the metro.","caption":"Transfer mode: activated.","location":"Metro","start":610,"end":640,"icon":"metro"},
+  {"id":"rapido","label":"Rapido","message":"He’s taking a Rapido to work.","caption":"Final boss: Mumbai traffic.","location":"On the road","start":640,"end":660,"icon":"scooter"},
+  {"id":"internship","label":"Reach internship & settle in","message":"He’s settling in at his internship.","caption":"Okay. Serious face on.","location":"Internship","start":660,"end":675,"icon":"office"},
+  {"id":"scouting","label":"Story scouting","message":"He’s scouting for the next story.","caption":"Internet detective. Actual evidence.","location":"At work","start":675,"end":780,"icon":"research"},
+  {"id":"meetings","label":"Meetings","message":"He’s in meetings.","caption":"Less small talk. More good questions.","location":"At work","start":780,"end":840,"icon":"meeting"},
+  {"id":"lunch","label":"Lunch","message":"He’s taking a lunch break.","caption":"A small pause in a very full day.","location":"Lunch break","start":840,"end":870,"icon":"lunch"},
+  {"id":"documents","label":"Documents & dossiers","message":"He’s working on documents and dossiers.","caption":"Turning chaos into something readable.","location":"At work","start":870,"end":960,"icon":"documents"},
+  {"id":"campaigns","label":"Campaigns","message":"He’s building campaigns.","caption":"What if we made it impossible to ignore?","location":"At work","start":960,"end":1020,"icon":"campaign"},
+  {"id":"design","label":"Design","message":"He’s designing.","caption":"Making the messy look intentional.","location":"At work","start":1020,"end":1080,"icon":"design"},
+  {"id":"wrap","label":"Wrap up office work","message":"He’s wrapping up the day’s work.","caption":"Saving the files. Keeping the ideas.","location":"At work","start":1080,"end":1140,"icon":"laptop"},
+  {"id":"return","label":"Return commute","message":"He’s finding his way home.","caption":"Shift over. Brain still running.","location":"Return commute","start":1140,"end":1230,"icon":"train"},
+  {"id":"home","label":"Home, dinner & break","message":"He’s home for dinner and a break.","caption":"The city softens. The tabs stay open.","location":"Home","start":1230,"end":1290,"icon":"home"},
+  {"id":"assignments","label":"College assignments / projects","message":"He’s working on college projects.","caption":"The second shift nobody asked for.","location":"Home desk","start":1290,"end":1470,"icon":"laptop"},
+  {"id":"unwind","label":"Stop working & unwind","message":"He’s closing the tabs and unwinding.","caption":"Letting the day settle.","location":"Home","start":1470,"end":1500,"icon":"moon"},
+  {"id":"sleep","label":"Sleep","message":"He’s finally getting some sleep.","caption":"Shutting down. Ideas still loading.","location":"Home","start":1500,"end":1980,"icon":"bed"}
+]

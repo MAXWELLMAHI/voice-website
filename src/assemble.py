@@ -60,4 +60,8 @@ js=js.replace('const e=document.title,t="Did you fall asleep?";','const e=docume
 runtime.write_text(js,encoding='utf-8')
 from build_alley import build_alley
 build_alley(SITE)
+from build_daily_loop import build_daily_loop
+build_daily_loop(SITE)
+from build_project_wave import build_project_wave
+build_project_wave(SITE)
 print(json.dumps({'hero_bytes':(DIST/'voice-hero.html').stat().st_size,'video_bytes':(ROOT/'media'/'hero-7508.mp4').stat().st_size}))

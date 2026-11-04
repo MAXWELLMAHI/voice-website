@@ -20,7 +20,7 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 
 | Path | Contents |
 | --- | --- |
-| `dist/index.html` | Complete website, including the original lower sections |
+| `dist/index.html` | Full portfolio: hero, introduction, daily loop, Mumbai, vertical timeline and contact |
 | `dist/voice-hero.html` | Standalone hero with its video, poster and fonts embedded |
 | `dist/assets/` | Stylesheets, animation JavaScript, images, audio and decorative clips |
 | `dist/assets/site-typography.css` | Current site-wide font definitions and role mappings |
@@ -30,6 +30,11 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 | `src/original-index.html` | Base markup for the complete website |
 | `src/intro-story.css` | Responsive introduction: serif welcome and handwritten aside |
 | `src/stats-clock.css` | Gold clock asset replacement above the minimum-duration readout |
+| `src/daily-loop.data.json` | Seventeen confirmed routine activities and overnight times |
+| `src/daily-loop.template.html`, `src/daily-loop.js`, `src/daily-loop.css` | Scroll-driven clock, independent hands and running character |
+| `src/project-wave.data.json` | Ten biography milestones, hover copy and three image slots per milestone |
+| `src/project-wave.template.html`, `src/project-wave.js`, `src/project-wave.css` | Vertical five-strip project timeline and click spotlight transition |
+| `src/contact.template.html` | Final contact section and contact page |
 | `src/assemble.py` | Builds the current hero and integrates it into the complete website |
 | `src/prepare_fonts.py` | Downloads the font files and updates site-wide typography rules |
 | `src/font-faces.css` | Font-face definitions used when embedding fonts into the hero |
@@ -63,3 +68,13 @@ The Mumbai section uses the supplied landscape artwork, `Teal-Hazed Urban Canyon
 `src/mumbai-alley.template.html` maps six smoothly joined depth bands onto a continuous perspective surface. Inverse projection preserves the exact artwork at entry, with no repeated images or cutout seams. The foreground passes the camera faster than the distant teal lane during a 680-viewport-height scroll journey. “Sleep well,” “Respect your body,” and “Don't pull up” occupy three separate depths, fade in and out, and can be occluded by closer buildings. The scene also supports restrained pointer parallax, touch and keyboard scrolling. `src/build_alley.py` integrates it into the full page on `npm run build`.
 
 Reduced-motion settings show the still landscape with all three phrases and a shorter section. A still-image fallback remains available if WebGL or the scene library cannot load. The standalone `/mumbai-alley.html` preview offers the same scroll journey. Browser captures and the visual storyboard are saved under `review/`.
+
+## Daily loop
+
+`/daily-loop.html` opens the scroll-driven routine directly, without an additional entrance. `src/daily-loop.data.json` contains the user's seventeen activities from 9:00 AM through the following 9:00 AM. Each activity has a semantic scroll segment; the displayed time interpolates across that activity's actual duration. The character and gold dial complete one circuit, and the independent hour and minute hands follow the real elapsed time. Scroll reverses the motion. Reduced-motion users receive the full schedule as a readable list.
+
+## Vertical project timeline
+
+`/project-wave.html` opens the vertical timeline directly. It starts with engineering in 2023 and follows the ten supplied milestones. Each entry contains exactly five horizontal wave strips and at least three independent image columns. Hover reveals the title, subheading, short intro and work summary without changing the artwork. Clicking highlights all five strips, dims the surrounding page briefly, then opens `/projects/<id>.html`. On mobile the summary is visible below the strips. The final milestone is followed immediately by contact; older sleep-guide chapters remain hidden as compatibility hooks for the original runtime.
+
+Add images using `src/media/timeline/README.md`. All thirty initial image slots are empty intentionally. No generated illustration is presented as a photograph of the user's experiences. The earlier concept artwork and its exact generation prompts remain in `src/media/wave-projects/` for optional use. Replace copy, image paths and ordering in `src/project-wave.data.json`, then rebuild. Project pages are generated from the same data. Contact details remain explicitly pending until supplied.
