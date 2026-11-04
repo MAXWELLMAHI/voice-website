@@ -1,8 +1,8 @@
-# Mumbai Chawl Edition
+# VOICE — Built in the Noise.
 
-The hero of the Sleep Well recreation now uses the complete IMG_7507.MP4 clip supplied by the user, with its own audio. The original cream moon loading animation is restored. The VOICE heading, logo and tagline have been removed from the hero. Selecting Enter Site starts the clip with sound. A side button mutes and unmutes the video; previous ambient tracks are muted.
+The hero of the Sleep Well recreation now uses the complete IMG_7508.MP4 clip supplied by the user, with its own audio. The original cream moon loading animation is restored. The centered VOICE heading and Built in the Noise. tagline are displayed over the hero. Selecting Enter Site starts the clip with sound. A side button mutes and unmutes the video; previous ambient tracks are muted.
 
-The picture's existing black borders were removed. The full 55.53-second timeline and its sound are preserved in a 1280×720, 30 fps H.264 / AAC version. The video remains the visual scene, with gentle curved perspective, mouse parallax, and scroll zoom. No additional city models or story chapter are added.
+The picture's existing black borders were removed. The full 55.1-second timeline and its sound are preserved in a 1280×720, 30 fps H.264 / AAC version. The video remains the visual scene, with gentle curved perspective, mouse parallax, and scroll zoom. No additional city models or story chapter are added.
 
 ## Local preview
 
@@ -17,3 +17,11 @@ Open http://localhost:4173. The integrated page continues into the original lowe
 `dist/voice-hero.html` is a single HTML file with the video and poster embedded. It uses pinned Three.js 0.128.0, GSAP 3.12.5 and ScrollTrigger 3.12.5 from jsDelivr, plus Google Fonts. Open through an HTTP server for best compatibility. Playback with sound begins after the user's Enter Site click, as required by browser autoplay rules. Pixel ratio is capped at 2 and at 1.5 on mobile. Offscreen rendering and video playback pause when the hero leaves view.
 
 The original site's separate note-panel film remains an external HLS dependency; it is unrelated to this hero video. The available legacy site runtime is the published JavaScript bundle, not the original author's development project.
+
+## Site-wide typography
+
+- Cormorant SC: hero title, chapter headlines and dramatic display statements.
+- ABeeZee: paragraphs, descriptions, navigation, interfaces and project details.
+- Borel: handwritten annotations, the hero footer note and small illustrated notes.
+
+The font files are served locally in the integrated site and embedded in the standalone hero. Their OFL licenses are in dist/assets/fonts/. Fonts embedded within the supplied film itself are part of the footage and remain intact.
