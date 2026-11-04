@@ -3,184 +3,150 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Life in Mumbai — Depth Study</title>
+<title>Life in Mumbai — Into the Night</title>
 <link rel="stylesheet" href="/assets/site-typography.css">
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:clip;background:#071c22;color:#eee5d8}
-.stage{position:fixed;inset:0;overflow:clip;isolation:isolate}
-.ambient{position:absolute;inset:0;z-index:-4;background:url('/assets/mumbai/life-in-mumbai.jpg') center/cover no-repeat;filter:blur(25px) brightness(.38) saturate(.85);transform:scale(1.04)}
-.atmosphere{position:absolute;inset:0;z-index:-3;background:radial-gradient(ellipse at 50% 48%,#09212900 20%,#07181cb3 80%),linear-gradient(180deg,#07191b70,transparent 30%,#051318b3);pointer-events:none}
-.fallback{position:absolute;left:50%;top:50%;height:var(--art-height,80vh);width:var(--art-width,53.33vh);transform:translate(-50%,-50%);object-fit:contain;z-index:-2;transition:opacity .5s}
-.webgl-ready .fallback{opacity:0}
-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
-.vignette{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 100px #020b1238}
-.annotation{position:absolute;left:30px;top:27px;font:12px 'Borel',cursive;color:#e2d2bbbd;letter-spacing:0;pointer-events:none}
-.caption{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);width:min(90%,380px);text-align:center;pointer-events:none}
-.phase-counter{display:flex;gap:12px;justify-content:center;align-items:center;font:8px 'ABeeZee',Arial,sans-serif;letter-spacing:.18em;color:#a1b3b7}
-.phase-counter:before,.phase-counter:after{content:'';height:1px;width:25px;background:#bdd3d338}
-.phase-text{font:400 clamp(24px,3vw,38px)/1.1 'Cormorant SC',Georgia,serif;margin:13px 0 0;color:#f0e6d5;text-shadow:0 2px 18px #031014}
-.perspective-note{position:absolute;right:28px;top:29px;font:8px 'ABeeZee',Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#a9b7b584;pointer-events:none}
-@media(min-width:1000px),(min-width:700px) and (max-height:600px){.caption{left:auto;right:4.5%;top:50%;bottom:auto;transform:translateY(-50%);width:18%;max-width:260px}.phase-text{font-size:clamp(27px,2.8vw,42px);line-height:1.18}}
-@media(max-width:600px){.annotation{top:23px;left:22px;font-size:10px}.perspective-note{font-size:6px;right:22px;top:25px;letter-spacing:.1em}.caption{bottom:32px}.phase-text{font-size:27px;margin-top:11px}.phase-counter{font-size:7px}}
-@media(prefers-reduced-motion:reduce){.fallback{transition:none}}
+*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;background:#071c22;color:#f4ead4}body{overscroll-behavior-x:none}body.embedded{height:100%;overflow:clip}
+.journey-scroll{height:680svh}.embedded .journey-scroll{display:none}.stage{position:fixed;inset:0;overflow:clip;isolation:isolate;background:#0a3039}
+.fallback,canvas{position:absolute;inset:0;width:100%;height:100%;display:block}.fallback{object-fit:cover;object-position:50% 50%;transition:opacity .6s}.webgl-ready .fallback{opacity:0}canvas{z-index:1}
+.veil{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,#04121666,transparent 24%,transparent 70%,#041216bd),radial-gradient(ellipse at 50% 52%,transparent 32%,#0412164d 100%)}
+.annotation,.coordinates,.journey-hint,.chapter{position:absolute;z-index:4;pointer-events:none}.annotation{left:clamp(24px,3.5vw,64px);top:clamp(24px,4vh,48px);font:400 clamp(13px,1.1vw,17px) 'Borel',cursive;color:#f4ead4}
+.coordinates{right:clamp(24px,3.5vw,64px);top:clamp(27px,4.5vh,52px);font:8px/1.8 'ABeeZee',sans-serif;letter-spacing:.19em;text-align:right;color:#e3e4d2a6;text-transform:uppercase}
+.journey-hint{left:clamp(24px,3.5vw,64px);bottom:clamp(28px,5vh,60px);display:flex;align-items:center;gap:14px;font:8px 'ABeeZee',sans-serif;letter-spacing:.18em;color:#e8e4d5ba}.journey-hint:before{content:'↓';font-size:18px;letter-spacing:0;color:#e8e4d5}.journey-hint:after{content:'';height:1px;width:48px;background:#e8e4d54d}
+.chapter{right:clamp(24px,3.5vw,64px);bottom:clamp(28px,5vh,60px);display:flex;gap:16px;align-items:center;font:9px 'ABeeZee',sans-serif;letter-spacing:.16em;color:#e8e4d5b3}.chapter-track{width:90px;height:1px;background:#e8e4d533}.chapter-fill{width:100%;height:1px;background:#e8e4d5;transform:scaleX(0);transform-origin:left}.chapter-total{color:#e8e4d56b}
+.fallback-copy{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none}.fallback-copy h2{margin:0;max-width:85%;font:400 clamp(48px,7.5vw,120px)/.92 'Cormorant SC',Georgia,serif;text-shadow:0 3px 24px #02191c;opacity:0}.fallback-mode .fallback-copy h2{opacity:1}.accessible-copy{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.reduced .fallback-copy{background:#04121688}.reduced .fallback-copy h2{opacity:1;font-size:clamp(38px,6vw,82px);line-height:1.3}.reduced .journey-hint{display:none}
+@media(max-width:600px){.coordinates{font-size:6px;letter-spacing:.1em;top:28px}.annotation{font-size:12px;top:25px}.journey-hint{font-size:6px;letter-spacing:.1em;gap:8px;max-width:58%}.journey-hint:after{width:22px}.chapter{gap:8px;font-size:7px}.chapter-track{width:42px}}
+@media(prefers-reduced-motion:reduce){.fallback{transition:none}.journey-scroll{height:180svh}}
 </style>
 </head>
 <body>
-<main class="stage" id="alley-stage" aria-label="An immersive perspective of the supplied Mumbai alley illustration">
-  <div class="ambient" aria-hidden="true"></div>
-  <div class="atmosphere" aria-hidden="true"></div>
-  <img class="fallback" src="/assets/mumbai/life-in-mumbai.jpg" width="640" height="960" alt="An illustrated Mumbai alley between detailed buildings, balconies and rooftops">
-  <canvas id="alley-canvas" aria-label="Mumbai alley with a subtle three-dimensional perspective illusion"></canvas>
-  <div class="vignette" aria-hidden="true"></div>
-  <div class="annotation">Life in Mumbai</div>
-  <div class="perspective-note">Move gently. Look a little deeper.</div>
-  <div class="caption" aria-live="off">
-    <div class="phase-counter"><span id="phase-index">01</span><span>/ 03</span></div>
-    <h2 class="phase-text">Don't Pill Up</h2>
-  </div>
+<div class="journey-scroll" aria-hidden="true"></div>
+<main class="stage" id="alley-stage" aria-label="Life in Mumbai: a journey through the city at night">
+  <img class="fallback" src="/assets/mumbai/teal-urban-canyon.png" width="1672" height="941" alt="A wide painted Mumbai alley, warm windows and balconies opening onto a deep teal night">
+  <canvas id="alley-canvas" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div>
+  <div class="annotation">Life in Mumbai</div><div class="coordinates">The city stays awake.<br>You don't have to.</div>
+  <div class="fallback-copy" aria-hidden="true"><h2 id="fallback-phrase">Sleep well</h2></div>
+  <div class="journey-hint">SCROLL TO GO DEEPER</div>
+  <div class="chapter" aria-hidden="true"><span id="phase-index">01</span><div class="chapter-track"><div class="chapter-fill"></div></div><span class="chapter-total">/ 03</span></div>
+  <div class="accessible-copy"><h1>Life in Mumbai</h1><p>Sleep well. Respect your body. Don't pull up.</p></div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script>
 (()=>{
   'use strict';
-  const EMBED=new URLSearchParams(location.search).has('embed');
-  const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const canvas=document.getElementById('alley-canvas');
-  const stage=document.getElementById('alley-stage');
-  const caption=document.querySelector('.phase-text');
-  const words=["Don't Pill Up",'Respect Your Body','Sleep Well'];
-  const motion={x:0,y:0,progress:0};
-  let active=!EMBED,firstFrame=true,phase=0,renderer,camera,scene,artwork,lastFrame=0;
-  const BASE_Z=8,BASE_FOV=42,BASE_HEIGHT=6;
+  const EMBED=new URLSearchParams(location.search).has('embed'),REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Named stills make the requested visual storyboard reproducible without
+  // changing the embedded journey or depending on screenshot timing.
+  const stillProgress=EMBED?undefined:({sleep:.19,respect:.51,deeper:.85})[new URLSearchParams(location.search).get('still')];
+  document.body.classList.toggle('embedded',EMBED||typeof stillProgress==='number');
+  const stage=document.getElementById('alley-stage'),canvas=document.getElementById('alley-canvas');
+  const fallbackPhrase=document.getElementById('fallback-phrase'),phaseIndex=document.getElementById('phase-index'),fill=document.querySelector('.chapter-fill');
+  const words=['Sleep well','Respect your body',"Don't pull up"],target={progress:0,x:0,y:0},motion={progress:0,x:0,y:0};
+  const ART_ASPECT=1672/941,FOV=48,TRAVEL=38,layers=[],phrases=[];
+  let active=!EMBED,renderer,scene,camera,lastTime=0,lastRendered=0,phase=-1,dirty=true;
   const send=data=>{if(EMBED)parent.postMessage({mumbaiAlley:true,...data},location.origin);};
-  const smooth=(a,b,t)=>{t=Math.max(0,Math.min(1,(t-a)/(b-a)));return t*t*(3-2*t);};
-
-  function fitArtwork(){
-    const w=innerWidth,h=innerHeight;
-    const sideCaption=w>=1000||(w>=700&&h<600);
-    const maxH=Math.min(h*(sideCaption?.92:.82),960*.94,(w-32)/(640/960));
-    stage.style.setProperty('--art-height',maxH+'px');
-    stage.style.setProperty('--art-width',(maxH*640/960)+'px');
-    if(!renderer||!artwork)return;
-    camera.aspect=w/h;
-    camera.updateProjectionMatrix();
-    renderer.setPixelRatio(Math.min(devicePixelRatio,w<700?1.5:2));
-    renderer.setSize(w,h);
-    // Pixel sizing is based on the supplied image, with room for the dolly zoom.
-    const viewHeight=2*BASE_Z*Math.tan(THREE.MathUtils.degToRad(BASE_FOV/2));
-    const imageScale=maxH/h*viewHeight/BASE_HEIGHT;
-    artwork.scale.set(imageScale,imageScale,1);
-    canvas.dataset.artHeight=String(Math.round(maxH));
-    canvas.dataset.pixelRatio=String(renderer.getPixelRatio());
-    firstFrame=true;
-  }
-
-  function updateProgress(p){
-    p=Math.max(0,Math.min(1,p));
-    gsap.to(motion,{progress:p,duration:REDUCED?0:.75,ease:'power3.out',overwrite:'auto'});
-    const next=p<.33?0:p<.67?1:2;
-    if(next!==phase){
-      phase=next;
-      gsap.to(caption,{autoAlpha:0,y:-3,duration:REDUCED?0:.22,ease:'power3.out',overwrite:true,onComplete:()=>{
-        caption.textContent=words[phase];
-        document.getElementById('phase-index').textContent=String(phase+1).padStart(2,'0');
-        gsap.fromTo(caption,{autoAlpha:0,y:4},{autoAlpha:1,y:0,duration:REDUCED?0:.55,ease:'power3.out'});
-      }});
+  const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+  const smooth=(a,b,v)=>{const t=clamp((v-a)/(b-a));return t*t*(3-2*t);};
+  // Six depth bands share a continuous surface. Inverse projection makes the
+  // entry match the original exactly, without repeated photographs or seams.
+  const depthBands=[[0,120],[.06,76],[.18,44],[.33,28],[.55,17],[1,9]];
+  function artworkDepth(u,v){
+    const lower=1-v,left=.442+.049*lower,right=.590-.062*lower;
+    const facade=clamp(Math.max((left-u)/left,(u-right)/(1-right),0));
+    for(let i=1;i<depthBands.length;i++){
+      const [a,far]=depthBands[i-1],[b,near]=depthBands[i];
+      if(facade<=b){const t=smooth(a,b,facade);return far+(near-far)*t;}
     }
-    stage.dataset.phase=String(next+1);
+    return 9;
   }
-
-  fitArtwork();
-  try{
-    scene=new THREE.Scene();
-    camera=new THREE.PerspectiveCamera(BASE_FOV,innerWidth/innerHeight,.1,60);
-    renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
-    renderer.outputEncoding=THREE.sRGBEncoding;
-    renderer.setClearColor(0x000000,0);
-    renderer.toneMapping=THREE.NoToneMapping;
-    const loader=new THREE.TextureLoader();
-    loader.load('/assets/mumbai/life-in-mumbai.jpg',texture=>{
-      texture.encoding=THREE.sRGBEncoding;
-      texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
-      texture.minFilter=THREE.LinearMipmapLinearFilter;
-      texture.magFilter=THREE.LinearFilter;
-      const geometry=new THREE.PlaneGeometry(4,6,96,144);
-      const positions=geometry.attributes.position,uv=geometry.attributes.uv;
+  const beats=[
+    {text:'Sleep well',lines:['Sleep well'],depth:20,begin:.035,peak:.19,end:.32,width:.54},
+    {text:'Respect your body',lines:['Respect','your body'],depth:30,begin:.36,peak:.51,end:.66,width:.58},
+    {text:"Don't pull up",lines:["Don't",'pull up'],depth:49,begin:.70,peak:.85,end:1,width:.54}
+  ];
+  function setProgress(value){
+    target.progress=clamp(value);dirty=true;
+    const next=target.progress<.335?0:target.progress<.675?1:2;
+    if(next!==phase){phase=next;phaseIndex.textContent=String(next+1).padStart(2,'0');if(!REDUCED)fallbackPhrase.textContent=words[next];stage.dataset.phase=String(next+1);}
+    fill.style.transform=`scaleX(${target.progress})`;
+  }
+  function fitScene(){
+    dirty=true;if(!renderer)return;
+    const aspect=innerWidth/innerHeight;
+    camera.aspect=aspect;camera.updateProjectionMatrix();renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<700?1.5:2));renderer.setSize(innerWidth,innerHeight);
+    layers.forEach(({mesh})=>{
+      const height=2*120*Math.tan(FOV*Math.PI/360)*Math.max(1,aspect/ART_ASPECT),width=height*ART_ASPECT;
+      const positions=mesh.geometry.attributes.position,uv=mesh.geometry.attributes.uv;
       for(let i=0;i<positions.count;i++){
-        const u=uv.getX(i),v=uv.getY(i),lower=1-v;
-        // The central vanishing lane is farther away; the facades sit nearer.
-        const leftBoundary=.33+.105*lower;
-        const rightBoundary=.69-.16*lower;
-        const left=1-smooth(leftBoundary-.018,leftBoundary+.025,u);
-        const right=smooth(rightBoundary-.025,rightBoundary+.018,u);
-        const facade=Math.max(left,right);
-        const streetDepth=-2.1+1.25*lower;
-        const facadeDepth=.35+.65*lower+(right>.5?.12:0);
-        const edge=smooth(0,.045,Math.min(u,1-u))*smooth(0,.07,Math.min(v,1-v));
-        const depth=(streetDepth*(1-facade)+facadeDepth*facade)*edge;
-        // Inverse projection preserves the exact image at the neutral viewpoint.
-        // Only the camera moves: the artwork never ripples, tears or regenerates.
-        const projection=(BASE_Z-depth)/BASE_Z;
-        positions.setXYZ(i,positions.getX(i)*projection,positions.getY(i)*projection,depth);
+        const u=uv.getX(i),v=uv.getY(i),depth=artworkDepth(u,v);
+        positions.setXYZ(i,(u-.5)*width*depth/120,(v-.5)*height*depth/120,-depth);
       }
-      geometry.computeVertexNormals();
-      const material=new THREE.MeshBasicMaterial({map:texture,transparent:true,depthWrite:false,toneMapped:false});
-      material.onBeforeCompile=shader=>{
-        shader.fragmentShader=shader.fragmentShader.replace('#include <dithering_fragment>',`#include <dithering_fragment>
-          float edgeFade=smoothstep(0.0,0.012,vUv.x)*smoothstep(0.0,0.012,1.0-vUv.x);
-          gl_FragColor.a*=edgeFade;
-        `);
-      };
-      artwork=new THREE.Mesh(geometry,material);
-      scene.add(artwork);
-      fitArtwork();
-      stage.classList.add('webgl-ready');
-      stage.dataset.ready='true';
-      canvas.dataset.source='640x960-original-jpeg';
-      send({ready:true});
-      requestAnimationFrame(render);
-    },undefined,error=>{stage.dataset.fallback='true';console.error('Mumbai artwork could not load',error);});
-  }catch(error){stage.dataset.fallback='true';console.error('Mumbai depth unavailable',error);}
-
-  function render(t){
-    requestAnimationFrame(render);
-    if(document.hidden||(!active&&!firstFrame))return;
-    if(innerWidth<700&&t-lastFrame<32&&!firstFrame)return;
-    lastFrame=t;firstFrame=false;
-    const z=BASE_Z-(REDUCED?0:motion.progress*.9);
-    camera.position.set(REDUCED?0:motion.x,REDUCED?0:motion.y,z);
-    // A restrained dolly zoom changes the relationship of the buildings and lane
-    // while keeping the image's overall size stable and its detail intact.
-    camera.fov=2*THREE.MathUtils.radToDeg(Math.atan(BASE_Z/z*Math.tan(THREE.MathUtils.degToRad(BASE_FOV/2))));
-    camera.updateProjectionMatrix();
-    camera.lookAt(0,0,-.45);
-    renderer.render(scene,camera);
-  }
-
-  addEventListener('resize',fitArtwork);
-  addEventListener('pointermove',e=>{
-    if(REDUCED||innerWidth<700)return;
-    gsap.to(motion,{x:(e.clientX/innerWidth-.5)*.24,y:-(e.clientY/innerHeight-.5)*.10,duration:1.7,ease:'power3.out',overwrite:'auto'});
-  },{passive:true});
-  addEventListener('pointerleave',()=>gsap.to(motion,{x:0,y:0,duration:2,ease:'power3.out'}));
-
-  if(EMBED){
-    addEventListener('message',e=>{
-      if(e.source!==parent||e.origin!==location.origin||!e.data?.mumbaiAlleyParent)return;
-      if(Number.isFinite(e.data.progress))updateProgress(e.data.progress);
-      if(typeof e.data.active==='boolean')active=e.data.active;
+      positions.needsUpdate=true;mesh.geometry.computeBoundingSphere();
     });
-    addEventListener('wheel',e=>{e.preventDefault();send({wheel:e.deltaY});},{passive:false});
-    let previousY=0;
-    addEventListener('touchstart',e=>previousY=e.touches[0].clientY,{passive:true});
-    addEventListener('touchmove',e=>{const y=e.touches[0].clientY;send({wheel:previousY-y});previousY=y;e.preventDefault();},{passive:false});
-  }else{
-    active=true;
-    // The standalone file offers the same three phases for quick local review.
-    let previewProgress=0;
-    addEventListener('wheel',e=>{e.preventDefault();previewProgress=Math.max(0,Math.min(1,previewProgress+e.deltaY*.00045));updateProgress(previewProgress);},{passive:false});
+    phrases.forEach(({mesh,beat,textureAspect})=>{
+      const distance=beat.depth-TRAVEL*beat.peak;
+      const width=2*distance*Math.tan(FOV*Math.PI/360)*aspect*(innerWidth<700?.88:beat.width);
+      mesh.scale.set(width,width/textureAspect,1);
+    });
+    canvas.dataset.pixelRatio=String(renderer.getPixelRatio());
   }
+  function phraseTexture(beat){
+    const art=document.createElement('canvas');art.width=2048;art.height=beat.lines.length===1?470:1000;
+    const ctx=art.getContext('2d');ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#f5ecd8';
+    let size=380;ctx.font=`400 ${size}px 'Cormorant SC'`;
+    while(Math.max(...beat.lines.map(line=>ctx.measureText(line).width))>art.width*.92){size-=4;ctx.font=`400 ${size}px 'Cormorant SC'`;}
+    beat.lines.forEach((line,i)=>ctx.fillText(line,art.width/2,art.height/2+(i-(beat.lines.length-1)/2)*size*.91));
+    const texture=new THREE.CanvasTexture(art);texture.encoding=THREE.sRGBEncoding;texture.minFilter=THREE.LinearFilter;
+    return {texture,aspect:art.width/art.height};
+  }
+  function fallback(){stage.classList.add('fallback-mode');stage.dataset.fallback='true';send({ready:true});}
+  async function init(){
+    if(REDUCED){stage.classList.add('reduced');fallbackPhrase.innerHTML='Sleep well<br>Respect your body<br>Don’t pull up';stage.dataset.ready='reduced';send({ready:true});return;}
+    try{
+      if(typeof THREE==='undefined')throw new Error('Scene library unavailable');
+      scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(FOV,innerWidth/innerHeight,.1,300);
+      renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});renderer.outputEncoding=THREE.sRGBEncoding;renderer.setClearColor(0x0a3039,1);
+      const texture=await new Promise((resolve,reject)=>new THREE.TextureLoader().load('/assets/mumbai/teal-urban-canyon.png',resolve,undefined,reject));
+      texture.encoding=THREE.sRGBEncoding;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
+      const material=new THREE.MeshBasicMaterial({map:texture,depthWrite:true,toneMapped:false,side:THREE.DoubleSide});
+      const mesh=new THREE.Mesh(new THREE.PlaneGeometry(1,1,256,160),material);mesh.frustumCulled=false;scene.add(mesh);layers.push({mesh});
+      await document.fonts.load("400 120px 'Cormorant SC'");
+      for(const beat of beats){
+        const {texture,aspect}=phraseTexture(beat),material=new THREE.MeshBasicMaterial({map:texture,transparent:true,opacity:0,depthWrite:false,depthTest:true,toneMapped:false});
+        const mesh=new THREE.Mesh(new THREE.PlaneGeometry(1,1),material);mesh.position.set(0,.1,-beat.depth);scene.add(mesh);phrases.push({mesh,beat,textureAspect:aspect});
+      }
+      fitScene();stage.classList.add('webgl-ready');stage.dataset.ready='true';stage.dataset.layers=String(depthBands.length);canvas.dataset.source='1672x941-landscape';send({ready:true});requestAnimationFrame(render);
+    }catch(error){console.warn('Mumbai depth scene:',error);fallback();}
+  }
+  function render(now){
+    requestAnimationFrame(render);const dt=Math.min((now-lastTime)/1000||.016,.08);lastTime=now;
+    if(document.hidden||!active)return;if(innerWidth<700&&now-lastRendered<32)return;
+    const damp=1-Math.exp(-dt*7.5),moving=Math.abs(target.progress-motion.progress)+Math.abs(target.x-motion.x)+Math.abs(target.y-motion.y)>.0001;
+    if(!moving&&!dirty)return;
+    motion.progress+=(target.progress-motion.progress)*damp;motion.x+=(target.x-motion.x)*damp;motion.y+=(target.y-motion.y)*damp;
+    const travel=motion.progress*TRAVEL;
+    camera.position.set(motion.x+Math.sin(motion.progress*Math.PI*1.4)*.09,motion.y,-travel);camera.lookAt(motion.x*.15,0,-travel-90);
+    let visibleText='';phrases.forEach(({mesh,beat})=>{
+      const opacity=smooth(beat.begin,beat.peak-.035,motion.progress)*(1-smooth(beat.peak+.035,beat.end,motion.progress));
+      mesh.material.opacity=opacity;mesh.visible=opacity>.002&&beat.depth-travel>.4;if(opacity>.5)visibleText=beat.text;
+    });
+    stage.dataset.progress=motion.progress.toFixed(3);stage.dataset.travel=travel.toFixed(2);stage.dataset.phrase=visibleText;renderer.render(scene,camera);dirty=false;lastRendered=now;
+  }
+  addEventListener('resize',fitScene);
+  addEventListener('pointermove',event=>{if(REDUCED||innerWidth<700)return;target.x=(event.clientX/innerWidth-.5)*.20;target.y=-(event.clientY/innerHeight-.5)*.12;dirty=true;},{passive:true});
+  document.addEventListener('pointerleave',()=>{target.x=target.y=0;dirty=true;});
+  if(EMBED){
+    addEventListener('message',event=>{
+      if(event.source!==parent||event.origin!==location.origin||!event.data?.mumbaiAlleyParent)return;
+      if(Number.isFinite(event.data.progress))setProgress(event.data.progress);if(typeof event.data.active==='boolean'){active=event.data.active;dirty=true;}
+    });
+    addEventListener('wheel',event=>{event.preventDefault();send({wheel:event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?innerHeight:1)});},{passive:false});
+    let previousY=0;addEventListener('touchstart',event=>{if(event.touches.length===1)previousY=event.touches[0].clientY;},{passive:true});
+    addEventListener('touchmove',event=>{if(event.touches.length!==1)return;const y=event.touches[0].clientY;send({wheel:previousY-y});previousY=y;event.preventDefault();},{passive:false});
+    addEventListener('keydown',event=>{const amount={ArrowDown:80,ArrowUp:-80,PageDown:innerHeight*.8,PageUp:-innerHeight*.8,' ':innerHeight*.8}[event.key];if(amount!==undefined){event.preventDefault();send({wheel:event.shiftKey&&event.key===' '?-amount:amount});}});
+  }else if(typeof stillProgress!=='number'){const update=()=>setProgress(scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight));addEventListener('scroll',update,{passive:true});update();}
+  setProgress(typeof stillProgress==='number'?stillProgress:0);init();
 })();
 </script>
 </body>

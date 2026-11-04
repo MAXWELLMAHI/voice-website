@@ -31,12 +31,13 @@
 <link rel="stylesheet" href="/assets/5ec49ad1fe-index-DQEsxz9V.css"><link rel="canonical" href="https://sleep-well-recreation-golan.maheshgolam12.chatgpt.site/"><link rel="stylesheet" href="/assets/site-typography.css"><style id="voice-integration">
 .hero{height:160svh!important;min-height:100svh!important;position:relative!important;overflow:visible!important;z-index:30!important;background:#080e19!important}.hero__hold{display:none!important}.voice-viewport{position:sticky;top:0;height:100svh;width:100%;overflow:clip}.voice-viewport iframe{border:0;display:block;width:100%;height:100%;background:#080e19}.preloader{pointer-events:none;z-index:2147483000!important}body.voice-video-ready.webgl-ready .preloader{pointer-events:auto}body:not(.voice-video-ready) .preloader__enter{display:none!important}body:not(.voice-video-ready) .preloader__span{display:block!important}.trg-sound{display:none!important}body.voice-active .main-logo,body.voice-active .trg-note,body.voice-active .insigh-pannel,body.voice-active .cursor-insight{visibility:hidden!important;pointer-events:none!important}body.voice-active canvas.webgl{visibility:hidden!important}
 </style><style id="mumbai-alley-integration">
-    .spacer-fs.scene-tunnel{position:relative!important;overflow:visible!important;z-index:30!important;background:#071c22!important}
+    .spacer-fs.scene-tunnel{position:relative!important;height:680svh!important;min-height:680svh!important;overflow:visible!important;z-index:30!important;background:#071c22!important}
     .scene-tunnel__hold{display:none!important}
     .mumbai-alley-viewport{position:sticky;top:0;height:100svh;width:100%;overflow:clip}
     .mumbai-alley-viewport iframe{display:block;width:100%;height:100%;border:0;background:#071c22}
     body.mumbai-alley-active .main-logo,body.mumbai-alley-active .trg-note,body.mumbai-alley-active .insigh-pannel,body.mumbai-alley-active .cursor-insight{visibility:hidden!important;pointer-events:none!important}
     body.mumbai-alley-active canvas.webgl{visibility:hidden!important}
+    @media(prefers-reduced-motion:reduce){.spacer-fs.scene-tunnel{height:180svh!important;min-height:180svh!important}}
     </style></head><body class="body is-loading"><div class="style w-embed"><style>
 html {
 	font-size: calc(100vw / 1920 * 10);
@@ -1548,5 +1549,5 @@ addEventListener('message',e=>{if(e.source!==frame.contentWindow||e.origin!==loc
     function update(){scheduled=false;const r=section.getBoundingClientRect();const active=r.top<innerHeight*.5&&r.bottom>innerHeight*.5;window.__mumbaiAlleyActive=active;document.body.classList.toggle('mumbai-alley-active',active);const progress=Math.max(0,Math.min(1,-r.top/Math.max(1,r.height-innerHeight)));frame.contentWindow.postMessage({mumbaiAlleyParent:true,active,progress},location.origin);}
     function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(update);}}
     frame.addEventListener('load',update);addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});
-    addEventListener('message',e=>{if(e.source!==frame.contentWindow||e.origin!==location.origin||!e.data?.mumbaiAlley)return;if(e.data.ready)update();if(Number.isFinite(e.data.wheel))window.scrollBy(0,Math.max(-900,Math.min(900,e.data.wheel)));});update();})();
+    addEventListener('message',e=>{if(e.source!==frame.contentWindow||e.origin!==location.origin||!e.data?.mumbaiAlley)return;if(e.data.ready)update();if(Number.isFinite(e.data.wheel)){const delta=Math.max(-900,Math.min(900,e.data.wheel)),lenis=window.__voiceLenis;if(lenis)lenis.scrollTo(lenis.targetScroll+delta,{duration:.45,programmatic:false});else window.scrollBy(0,delta);}});update();})();
     </script></body></html>

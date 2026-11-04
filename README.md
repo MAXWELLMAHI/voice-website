@@ -2,6 +2,8 @@
 
 This folder contains the complete current website, its assets, and editable source code. The hero uses IMG_7508.MP4 with its audio, the centered VOICE heading and Built in the Noise. tagline, the original moon loader, and a sound toggle.
 
+This is the canonical working folder for all future website edits. Use this outer `VOICE-website` folder; the nested folder with the same name is an older copy. `../VOICE-website.zip` is a downloadable snapshot, while this folder holds the current working files. Workspace guidance is saved in `AGENTS.md` so future chats can follow the same location.
+
 ## Open the website locally
 
 Run `npm run dev`, then open http://127.0.0.1:4173/ in your browser. Keep the terminal open while using the preview; Ctrl+C stops it. No npm installation step is needed. Node.js/npm and Python 3 must be available.
@@ -30,7 +32,7 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 | `src/prepare_fonts.py` | Downloads the font files and updates site-wide typography rules |
 | `src/font-faces.css` | Font-face definitions used when embedding fonts into the hero |
 | `src/media/` | Web-ready copy of the latest supplied video, with audio, and its poster |
-| `.openai/hosting.json` | Existing private Sites project identity and static hosting configuration |
+| `.openai/hosting.json` | Existing Sites project identity and static hosting configuration |
 
 ## Make changes
 
@@ -52,6 +54,8 @@ The original lower-section runtime is included as its published JavaScript bundl
 
 ## Mumbai alley illusion
 
-The previous rotating tunnel/pill scene now uses the supplied life in mumbai (1).jpg illustration. The original 640×960 JPEG is copied byte-for-byte to `src/media/life-in-mumbai.jpg` and `dist/assets/mumbai/life-in-mumbai.jpg`. The main image is fitted near its native resolution; a soft ambient backdrop fills wide screens.
+The Mumbai section uses the supplied landscape artwork, `Teal-Hazed Urban Canyon at Night.png`. Its original 1672×941 pixels are copied byte-for-byte into `src/media/teal-urban-canyon.png` and `dist/assets/mumbai/teal-urban-canyon.png`. The earlier portrait artwork is retained in the source folder.
 
-`src/mumbai-alley.template.html` contains the image's perspective geometry, restrained mouse parallax, dolly zoom, and three scroll captions. The geometry compensates for perspective so the neutral view matches the image. `src/build_alley.py` integrates this scene into the full website when you run `npm run build`. Reduced-motion settings show a stable image. The original illustration is retained; no AI redrawing or destructive image processing is applied.
+`src/mumbai-alley.template.html` maps six smoothly joined depth bands onto a continuous perspective surface. Inverse projection preserves the exact artwork at entry, with no repeated images or cutout seams. The foreground passes the camera faster than the distant teal lane during a 680-viewport-height scroll journey. “Sleep well,” “Respect your body,” and “Don't pull up” occupy three separate depths, fade in and out, and can be occluded by closer buildings. The scene also supports restrained pointer parallax, touch and keyboard scrolling. `src/build_alley.py` integrates it into the full page on `npm run build`.
+
+Reduced-motion settings show the still landscape with all three phrases and a shorter section. A still-image fallback remains available if WebGL or the scene library cannot load. The standalone `/mumbai-alley.html` preview offers the same scroll journey. Browser captures and the visual storyboard are saved under `review/`.
