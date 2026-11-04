@@ -29,6 +29,7 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 | `src/hero-simple.template.html` | Editable hero markup, CSS and Three.js / GSAP code |
 | `src/original-index.html` | Base markup for the complete website |
 | `src/intro-story.css` | Responsive introduction: serif welcome and handwritten aside |
+| `src/stats-clock.css` | Gold clock asset replacement above the minimum-duration readout |
 | `src/assemble.py` | Builds the current hero and integrates it into the complete website |
 | `src/prepare_fonts.py` | Downloads the font files and updates site-wide typography rules |
 | `src/font-faces.css` | Font-face definitions used when embedding fonts into the hero |
@@ -44,6 +45,8 @@ python src/assemble.py
 ```
 
 Reload the local preview to see changes. Rebuilding uses the bundled assets and needs no package installation. To change typography roles, edit `src/prepare_fonts.py` and run it before rebuilding; that font refresh contacts Google Fonts.
+
+The minimum-duration circle now uses the supplied transparent gold clock and runner in `src/media/clockwork-runner.png`. `src/stats-clock.css` replaces the decorative frame, places the duration below the clock, and preserves the original animated background lines. The build copies the PNG unchanged to `dist/assets/clockwork-runner.png`.
 
 Cormorant SC is used for headings and display statements, ABeeZee for body text and interfaces, and Borel for handwritten notes. The video retains its full 55.1-second timeline and audio; only its existing black borders were cropped for the web version. The original large recording remains in Downloads.
 

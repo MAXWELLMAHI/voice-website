@@ -37,6 +37,9 @@ style='''<style id="voice-integration">
 </style>'''
 h=h.replace('</head>','<link rel="stylesheet" href="/assets/site-typography.css">'+style+'</head>')
 h=h.replace('</head>','<style id="voice-intro-story">'+(ROOT/'intro-story.css').read_text(encoding='utf-8')+'</style></head>')
+h=h.replace('</head>','<style id="voice-stats-clock">'+(ROOT/'stats-clock.css').read_text(encoding='utf-8')+'</style></head>')
+clock_asset=DIST/'assets'/'clockwork-runner.png'
+clock_asset.write_bytes((ROOT/'media'/'clockwork-runner.png').read_bytes())
 h=h.replace('I hope you find it helpful. Thank you 😊','<span class="handwritten-note">I hope you find it helpful. Thank you 😊</span>')
 h=h.replace('<body ', '<body ',1)
 bridge='''<script id="voice-bridge">
