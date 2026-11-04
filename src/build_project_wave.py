@@ -14,7 +14,9 @@ def image_slot(project,index,source,dist):
         file=source/'media'/relative
         target=dist/'assets'/relative
         target.parent.mkdir(parents=True,exist_ok=True)
-        shutil.copyfile(file,target)
+        if not target.exists() or file.stat().st_mtime > target.stat().st_mtime:
+            try: shutil.copyfile(file,target)
+            except Exception: pass
         return f'<img src="/assets/{relative.as_posix()}" alt="{esc(project["title"])} — image {index+1}" loading="lazy" decoding="async">'
     return f'<div class="wave-card-placeholder"><div class="wave-card-badge"><span>SLOT {index+1:02d}</span></div><div class="wave-card-center-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wave-card-kicker">{esc(project["title"])}</div></div>'
 
@@ -32,25 +34,30 @@ def build_project_wave(site):
     if media_dir.exists():
         dist_media_dir.mkdir(parents=True,exist_ok=True)
         for f in media_dir.glob('*'):
-            if f.is_file():shutil.copyfile(f,dist_media_dir/f.name)
+            if f.is_file():
+                dest_f = dist_media_dir / f.name
+                if not dest_f.exists() or f.stat().st_mtime > dest_f.stat().st_mtime:
+                    try: shutil.copyfile(f, dest_f)
+                    except Exception: pass
 
-    annotations = [
-        "where the spark started",
-        "first steps outside the classroom",
-        "voice on the world stage · Bali",
-        "finding perspective on my own",
-        "data, models & momentum",
-        "learning by showing up",
-        "six months of campaigns",
-        "building my own startup",
-        "marketing campaigns for OpenAI",
-        "the black book & presentation"
-    ]
+    annotations = {
+        "college-finale": "the black book & presentation",
+        "create": "marketing campaigns for OpenAI",
+        "gallygood": "building my own startup",
+        "blinksquare": "six months of campaigns",
+        "industry-events": "learning by showing up",
+        "agency-ai": "data, models & momentum",
+        "solo-travel": "finding perspective on my own",
+        "bali-mun": "voice on the world stage · Bali",
+        "pause-ngo": "first steps outside the classroom",
+        "engineering": "where the spark started"
+    }
 
     for i,project in enumerate(projects):
         assert len(project.get('images',[]))>=3, 'Every milestone needs at least three image slots'
         slots=[image_slot(project,j,source,dist) for j in range(len(project['images']))]
-        scribble = annotations[i] if i < len(annotations) else "movement in key"
+        scribble = annotations.get(project['id'], "movement in key")
+        station_num = project.get('num', len(projects) - i)
 
         pile_cards = ''.join([
             f'<div class="wave-pile-card card-{j}" data-card-index="{j}">{slots[j]}</div>'
@@ -60,7 +67,7 @@ def build_project_wave(site):
         station_html = (
             f'<li class="wave-project-station" id="station-{esc(project["id"])}" data-project-index="{i}" data-project-id="{esc(project["id"])}">'
             f'<div class="station-anchor" data-anchor-index="{i}">'
-            f'  <div class="station-note-head"><span class="note-num">{i+1:02d}</span></div>'
+            f'  <div class="station-note-head"><span class="note-num">{station_num:02d}</span></div>'
             f'  <div class="station-note-meta">'
             f'    <span class="station-year">{esc(project["subheading"])}</span>'
             f'    <h4 class="station-title">{esc(project["title"])}</h4>'
@@ -75,7 +82,7 @@ def build_project_wave(site):
         rows.append(station_html)
 
         page_slots=''.join(f'<div class="project-detail-slot {"is-empty" if not image else ""}">{slots[j]}</div>' for j,image in enumerate(project['images']))
-        detail=f'<main class="project-detail"><a class="project-detail-back" href="/project-wave.html#station-{esc(project["id"])}">← Back to the score</a><div class="project-detail-kicker">{i+1:02d} / {esc(project["subheading"])}</div><h1>{esc(project["title"])}</h1><p class="project-detail-intro">{esc(project["summary"])}</p><div class="project-detail-slots">{page_slots}</div><div class="project-detail-pending"><h2>The full story, next.</h2><p>{esc(project["work"])}</p><p>More images and project details will be added here.</p></div><a class="project-detail-back" href="/contact.html">Keep the conversation going ↗</a></main>'
+        detail=f'<main class="project-detail"><a class="project-detail-back" href="/project-wave.html#station-{esc(project["id"])}">← Back to the score</a><div class="project-detail-kicker">{station_num:02d} / {esc(project["subheading"])}</div><h1>{esc(project["title"])}</h1><p class="project-detail-intro">{esc(project["summary"])}</p><div class="project-detail-slots">{page_slots}</div><div class="project-detail-pending"><h2>The full story, next.</h2><p>{esc(project["work"])}</p><p>More images and project details will be added here.</p></div><a class="project-detail-back" href="/contact.html">Keep the conversation going ↗</a></main>'
         (project_dir/(project['id']+'.html')).write_text(page_shell(project['title'],detail),encoding='utf-8')
 
     template=(source/'project-wave.template.html').read_text(encoding='utf-8')

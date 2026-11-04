@@ -40,14 +40,15 @@
 
   function updateHUD(index){
     const p=projects[index];if(!p)return;
-    if(hudIndex)hudIndex.textContent=`${String(index+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}`;
+    const numStr=String(p.num || (projects.length - index)).padStart(2,'0');
+    if(hudIndex)hudIndex.textContent=`${numStr} / ${String(projects.length).padStart(2,'0')}`;
     if(hudKicker)hudKicker.textContent=p.subheading;
     if(hudTitle)hudTitle.textContent=p.title;
     if(hudSummary)hudSummary.textContent=p.summary;
     if(hudWorkTags){
       hudWorkTags.innerHTML=p.work.split('·').map(w=>`<span class="hud-tag">${w.trim()}</span>`).join('');
     }
-    if(playheadLabel)playheadLabel.textContent=`TRACK ${String(index+1).padStart(2,'0')}`;
+    if(playheadLabel)playheadLabel.textContent=`TRACK ${numStr}`;
   }
 
   function setActiveStation(index,fromHover=false){
@@ -67,7 +68,8 @@
   function openDrawer(index){
     const p=projects[index];if(!p||!drawer)return;
     setActiveStation(index);
-    if(drawerIndex)drawerIndex.textContent=String(index+1).padStart(2,'0');
+    const numStr=String(p.num || (projects.length - index)).padStart(2,'0');
+    if(drawerIndex)drawerIndex.textContent=numStr;
     if(drawerSubheading)drawerSubheading.textContent=p.subheading;
     if(drawerTitle)drawerTitle.textContent=p.title;
     if(drawerSummary)drawerSummary.textContent=p.summary;
