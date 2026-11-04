@@ -1,0 +1,13 @@
+.voice-introduction{position:relative;padding:clamp(72px,12svh,140px) 24px clamp(230px,35svh,420px)}
+.voice-introduction .introduction__hold{min-height:60svh;gap:0;padding:0;justify-content:center}
+.voice-introduction .introduction__index{margin-bottom:clamp(28px,4svh,46px)}
+.voice-introduction .introduction__subt{margin-bottom:clamp(26px,4svh,44px)}
+.voice-introduction .subtitle{gap:12px}
+.voice-introduction .subtitle__text{font-size:clamp(10px,.82vw,13px);line-height:1.6;letter-spacing:.15em;text-align:center}
+.voice-introduction .subtitle__dot{width:4px;height:4px;flex:none}
+.voice-introduction .introduction__descr{width:min(100%,1120px)!important;max-width:1120px!important;text-align:center}
+.voice-introduction .intro-story-title{margin:0;font-size:clamp(48px,7.2vw,112px);font-weight:400;line-height:.97;letter-spacing:-.045em;text-wrap:balance}
+.voice-introduction .intro-story-title,.voice-introduction .intro-story-title span{font-family:var(--font-display)!important}
+.voice-introduction .intro-story-title span{display:block;font-weight:inherit;line-height:inherit;letter-spacing:inherit}
+.voice-introduction .intro-story-note{margin:clamp(30px,4svh,46px) 0 0;font-family:var(--font-note)!important;font-size:clamp(15px,1.45vw,21px);font-weight:400;line-height:1.9;letter-spacing:0;opacity:.86;transform:rotate(-2deg)}
+@media(max-width:600px){.voice-introduction{padding:72px 24px max(156px,22svh)}.voice-introduction .introduction__hold{min-height:56svh}.voice-introduction .intro-story-title{font-size:clamp(40px,11vw,58px);line-height:1.03;letter-spacing:-.04em}.voice-introduction .subtitle__text{font-size:9px;letter-spacing:.1em}.voice-introduction .intro-story-note{font-size:14px;margin-top:28px}}

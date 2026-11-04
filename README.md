@@ -28,6 +28,7 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 | `dist/models/` | 3D models used by the lower sections |
 | `src/hero-simple.template.html` | Editable hero markup, CSS and Three.js / GSAP code |
 | `src/original-index.html` | Base markup for the complete website |
+| `src/intro-story.css` | Responsive introduction: serif welcome and handwritten aside |
 | `src/assemble.py` | Builds the current hero and integrates it into the complete website |
 | `src/prepare_fonts.py` | Downloads the font files and updates site-wide typography rules |
 | `src/font-faces.css` | Font-face definitions used when embedding fonts into the hero |
