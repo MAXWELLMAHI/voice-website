@@ -1,12 +1,124 @@
 [
-  {"id":"engineering","title":"Engineering studies.","subheading":"2023 · The beginning","summary":"I began engineering in 2023. This is where my timeline starts.","work":"Engineering · Learning · Exploring","images":["wave-projects/engineering-1.jpg","wave-projects/engineering-2.jpg","wave-projects/engineering-3.jpg"]},
-  {"id":"pause-ngo","title":"A pause, with a purpose.","subheading":"Pause NGO · Fundraising intern","summary":"I joined Pause NGO as a fundraising intern, taking my first steps into work beyond the classroom.","work":"Fundraising · Social impact","images":[null,null,null]},
-  {"id":"bali-mun","title":"Representing India in Bali.","subheading":"Asia World Model United Nations Summit 8","summary":"I travelled to Bali to represent India at the Asia World Model United Nations Summit 8.","work":"Representation · Model United Nations · Bali","images":[null,null,null]},
-  {"id":"solo-travel","title":"A little further, on my own.","subheading":"Solo travel · Malaysia & Indonesia","summary":"The fully funded opportunity to represent India also made a solo journey through Malaysia and Indonesia possible.","work":"Travel · Independence · New perspectives","images":[null,null,null]},
-  {"id":"agency-ai","title":"A new kind of momentum.","subheading":"agency.ai · Data scientist intern","summary":"At agency.ai, I worked as a data scientist intern across various projects. That experience gave me a boost.","work":"Data science · Projects · Learning by doing","images":[null,null,null]},
-  {"id":"industry-events","title":"Learning by showing up.","subheading":"Architecture · Luxury · Fashion","summary":"I attended architectural design shows, a Bulgari event and fashion events such as Vogue, observing the industry and how it works.","work":"Industry observation · Events · Fashion & design","images":[null,null,null]},
-  {"id":"blinksquare","title":"Growth, across the board.","subheading":"Blinksquare Events · Growth intern","summary":"For more than six months at Blinksquare Events, I worked across sectors and managed a range of campaigns.","work":"Growth · Multi-sector campaigns · Events","images":[null,null,null]},
-  {"id":"gallygood","title":"Building Gallygood.","subheading":"My social startup","summary":"I worked on my social startup, Gallygood—another part of the journey from learning to building.","work":"Social startup · Building · Experimenting","images":[null,null,null]},
-  {"id":"create","title":"Finding new ways to be heard.","subheading":"Create · Marketing campaigns for ChatGPT","summary":"Through Create, I worked on new marketing campaigns for ChatGPT by OpenAI.","work":"Marketing campaigns · Creative work · ChatGPT","images":[null,null,null]},
-  {"id":"college-finale","title":"One chapter, completed.","subheading":"Now · College finale","summary":"My college chapter is coming to an end. The black book, final project, presentation and submissions are complete.","work":"Final project · Black book · Presentation · Submissions","images":[null,null,null]}
+  {
+    "id": "engineering",
+    "title": "Engineering studies.",
+    "subheading": "2023 · The beginning",
+    "summary": "I began engineering in 2023. This is where my timeline starts.",
+    "work": "Engineering · Learning · Exploring",
+    "images": [
+      "wave-projects/engineering-1.jpg",
+      "wave-projects/engineering-2.jpg",
+      "wave-projects/engineering-3.jpg"
+    ]
+  },
+  {
+    "id": "pause-ngo",
+    "title": "Pawzz NGO.",
+    "subheading": "Pawzz NGO · Fundraising intern",
+    "summary": "I worked as a fundraising intern at Pawzz, raising more than ₹10,000 through social media campaigns, stories, posters, and grassroots word of mouth.",
+    "work": "Fundraising · Campaigns & Posters · ₹10k+ Raised · Grassroots impact",
+    "images": [
+      "wave-projects/pawzz-1.jpg",
+      "wave-projects/pawzz-3.jpg",
+      "wave-projects/pawzz-2.jpg"
+    ]
+  },
+  {
+    "id": "bali-mun",
+    "title": "From Mumbai to Bali.",
+    "subheading": "Asia World MUN 8 · UNICEF Committee",
+    "summary": "I represented India at the 8th Asia World Model United Nations conference in Bali, serving on the UNICEF committee. I debated children's rights, explored global policies, and learned how diplomacy, negotiation, and decision-making work. More than anything, it taught me how to listen, question, and stand up for something I believe in.",
+    "work": "Diplomacy · UNICEF Committee · Children's Rights · Global Policy",
+    "images": [
+      "wave-projects/mun-1.jpg",
+      "wave-projects/mun-2.jpg",
+      "wave-projects/mun-3.jpg"
+    ]
+  },
+  {
+    "id": "solo-travel",
+    "title": "First flight abroad. First solo adventure.",
+    "subheading": "Malaysia · My teenage years",
+    "summary": "No one in my family had ever travelled internationally. So taking my first international trip as a teenager felt like a pretty big deal. My journey around the Model United Nations summit in Bali also took me to Malaysia, where I spent over four days exploring a completely new place on my own. Different people, different cultures, different ways of living. It taught me to be more independent, humble, empathetic, and curious about the world beyond my own. Four days in a new country. A perspective I'll carry for life.",
+    "work": "Solo adventure · Malaysia · Independence · Four days exploring",
+    "images": [
+      "wave-projects/solo-3.jpg",
+      "wave-projects/solo-2.jpg",
+      "wave-projects/solo-1.jpg"
+    ]
+  },
+  {
+    "id": "agency-ai",
+    "title": "My first internship started at a party. Literally.",
+    "subheading": "Agency.ai · Data Science Intern",
+    "summary": "I was in my second year of engineering when I met the founder of Agency.ai at a party. I walked up, started a conversation, and somehow, that turned into my first internship. Then came the daily commute from Chembur to Lower Parel and my first real experience of the corporate world. I was surrounded by things I'd only studied or heard about—RAG, LLMs, embeddings, parsing, semantic search, and actual production code. Watching people build real products, especially founders figuring things out, was a completely different kind of education. I also built a great connection with the founder, Shabnam Kapoor, and we're still in touch. Agency.ai gave me my first real technical push, but more importantly, the confidence to ask questions, learn faster, and explore things I didn't yet understand.",
+    "work": "Data Science Intern · RAG & LLMs · Lower Parel · Production AI",
+    "images": [
+      "wave-projects/agency-1.jpg",
+      "wave-projects/agency-2.jpg",
+      "wave-projects/agency-3.jpg"
+    ]
+  },
+  {
+    "id": "industry-events",
+    "title": "Learning by showing up.",
+    "subheading": "Architecture · Luxury · Fashion",
+    "summary": "From Lakmé Fashion Week and Bulgari to Vogue Forces of Fashion and architectural design shows, I found myself exploring a world I had always been curious about. I wasn't there just for the glamour. I wanted to see how luxury brands think, how fashion comes together, and how design, storytelling, and experiences create something memorable. Every event gave me a different perspective on creativity, craftsmanship, and the luxury industry. Sometimes, the best way to learn about an industry is simply to step inside it.",
+    "work": "Bulgari Serpenti · Lakmé Fashion Week · Vogue Forces of Fashion · Design Exhibitions",
+    "images": [
+      "wave-projects/events-1.jpg",
+      "wave-projects/events-2.jpg",
+      "wave-projects/events-3.jpg"
+    ]
+  },
+  {
+    "id": "blinksquare",
+    "title": "I joined for growth. Ended up doing a bit of everything.",
+    "subheading": "Blinksquare Events · Growth Intern",
+    "summary": "Six months at Blinksquare taught me what it really means to take ownership. From marketing campaigns and social media to event operations, logistics, influencer outreach, design, and content creation, I got to explore almost every side of the business. What I loved most was the independence—I wasn't just following instructions; I was experimenting, making decisions, creating reels and campaign assets, and figuring things out along the way. Results: 700K+ campaign impressions, 20+ micro-influencer collaborations, 15+ customers acquired for our DIY kit, and 100+ responses to our 'Buy' CTA. I joined to understand growth; I left understanding how much work goes into making it happen.",
+    "work": "Growth · 700K+ Impressions · Influencer Collabs · Operations · Design",
+    "images": [
+      "wave-projects/blinksquare-1.jpg",
+      "wave-projects/blinksquare-2.jpg",
+      "wave-projects/blinksquare-3.jpg",
+      "wave-projects/blinksquare-4.jpg"
+    ]
+  },
+  {
+    "id": "gallygood",
+    "title": "Good things shouldn't have to travel far.",
+    "subheading": "GullyGood · Founder & Builder",
+    "summary": "GullyGood is one of the projects closest to my heart. I've been working on it for over a year, and watching it slowly turn from an idea into a real product has been an incredible experience. The idea is simple: connect people who want to donate with NGOs that need those resources, right in their neighbourhood. We're building a hyperlocal platform designed for cities like Mumbai, where donors can list items in a few steps and nearby NGOs can coordinate to receive them. We're currently developing the MVP and working towards a production-ready launch, exploring CSR partnerships and connecting with philanthropists to help bring GullyGood to life. Built for the neighbourhood. Made to do some good.",
+    "work": "Product Development · UI/UX · Social Impact · Hyperlocal Donation",
+    "images": [
+      "wave-projects/gullygood-1.jpg",
+      "wave-projects/gullygood-2.jpg",
+      "wave-projects/gullygood-3.jpg"
+    ]
+  },
+  {
+    "id": "create",
+    "title": "I went looking for stories. I found people.",
+    "subheading": "ChatGPT India Campaign · Research Coordinator",
+    "summary": "Working as a Research Coordinator with CREATE Media on a campaign for ChatGPT India has been one of the most meaningful experiences of my career. My job was to find remarkable people across India who were using ChatGPT to make a real difference in their lives. But finding a story was just the beginning. I scouted people, reached out, listened to their experiences, conducted meetings, documented their journeys, prepared research dossiers, and coordinated with the central team. Once a story moved forward, I helped assign creators and manage logistics until it was ready to go live. The three reels here started as stories I discovered and helped bring to life. Sometimes, the most meaningful thing you can do is help someone else's story be heard.",
+    "work": "Research · Story Scouting · Interviews · Documentation · Creator Coordination · Social Impact",
+    "images": [
+      "wave-projects/chatgpt-1.jpg",
+      "wave-projects/chatgpt-2.jpg",
+      "wave-projects/chatgpt-3.jpg",
+      "wave-projects/chatgpt-4.jpg"
+    ]
+  },
+  {
+    "id": "college-finale",
+    "title": "Finally, College.",
+    "subheading": "Now · College Finale",
+    "summary": "Four years. Countless deadlines, late nights, projects, and memories. College wasn't just about attending lectures and submitting assignments—I got to explore so much beyond the classroom. I served as Head of Design at AI Ignite Club, became Vice President of the GeeksforGeeks Community, led different teams, and even got the opportunity to present my research papers. Somewhere between managing people, building projects, making mistakes, and figuring things out, I grew more than I expected. And now, the black book, final project, presentations, and submissions are all done. One chapter, completed. So much more to figure out.",
+    "work": "Black Book · Final Project · AI Ignite · GeeksforGeeks VP · Research Papers",
+    "images": [
+      "wave-projects/college-1.jpg",
+      "wave-projects/college-2.jpg",
+      "wave-projects/college-3.jpg"
+    ]
+  }
 ]

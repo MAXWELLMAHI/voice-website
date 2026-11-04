@@ -75,15 +75,25 @@
     if(drawerFullLink)drawerFullLink.href=`/projects/${p.id}.html`;
 
     if(drawerGallery){
-      const pile=stations[index]?.querySelector('.station-card-pile');
       drawerGallery.innerHTML='';
-      if(pile){
-        [...pile.children].forEach(card=>{
+      if(p.images && p.images.some(Boolean)){
+        p.images.forEach((img, j)=>{
+          if(!img) return;
           const slot=document.createElement('div');
           slot.className='drawer-gallery-slot';
-          slot.innerHTML=card.innerHTML;
+          slot.innerHTML=`<img src="/assets/${img}" alt="${p.title} — image ${j+1}" loading="lazy">`;
           drawerGallery.appendChild(slot);
         });
+      } else {
+        const pile=stations[index]?.querySelector('.station-card-pile');
+        if(pile){
+          [...pile.children].forEach(card=>{
+            const slot=document.createElement('div');
+            slot.className='drawer-gallery-slot';
+            slot.innerHTML=card.innerHTML;
+            drawerGallery.appendChild(slot);
+          });
+        }
       }
     }
     try{

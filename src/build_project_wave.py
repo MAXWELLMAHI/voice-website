@@ -28,6 +28,11 @@ def build_project_wave(site):
     projects=json.loads((source/'project-wave.data.json').read_text(encoding='utf-8'))
     assert projects and len({project['id'] for project in projects})==len(projects)
     rows=[];project_dir=dist/'projects';project_dir.mkdir(parents=True,exist_ok=True)
+    media_dir=source/'media'/'wave-projects';dist_media_dir=dist/'assets'/'wave-projects'
+    if media_dir.exists():
+        dist_media_dir.mkdir(parents=True,exist_ok=True)
+        for f in media_dir.glob('*'):
+            if f.is_file():shutil.copyfile(f,dist_media_dir/f.name)
 
     annotations = [
         "where the spark started",
@@ -92,9 +97,12 @@ def build_project_wave(site):
     page=page.replace('</body>','<script src="/assets/project-wave.js" defer></script></body>')
     index.write_text(page,encoding='utf-8')
     for name in ('project-wave.css','project-wave.js'):(dist/'assets'/name).write_bytes((source/name).read_bytes())
-    runtime=dist/'assets/f7502c028f-index-8YjIcPvu.js';js=runtime.read_text(encoding='utf-8')
-    js=js.replace('if(window.__voiceHeroActive||window.__mumbaiAlleyActive)return;','if(window.__voiceHeroActive||window.__mumbaiAlleyActive||window.__voiceProjectWaveActive)return;')
-    runtime.write_text(js,encoding='utf-8')
+    runtime=dist/'assets/f7502c028f-index-8YjIcPvu.js'
+    if runtime.exists():
+        js=runtime.read_text(encoding='utf-8')
+        target_str='if(window.__voiceHeroActive||window.__mumbaiAlleyActive)return;'
+        if target_str in js:
+            runtime.write_text(js.replace(target_str,'if(window.__voiceHeroActive||window.__mumbaiAlleyActive||window.__voiceProjectWaveActive)return;'),encoding='utf-8')
     standalone='<section class="importance section-blue voice-project-wave" id="project-wave">'+template+'</section>'+contact+'<script src="/assets/project-wave.js"></script>'
     (dist/'project-wave.html').write_text(page_shell('The project score',standalone),encoding='utf-8')
     contact_page='<a class="contact-page-back" href="/project-wave.html">← Back to the score</a>'+contact.replace('Contact page ↗','Project timeline ↗').replace('href="/contact.html"','href="/project-wave.html"')

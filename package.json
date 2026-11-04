@@ -4,7 +4,7 @@
   "private": true,
   "description": "VOICE website and immersive video hero",
   "scripts": {
-    "dev": "python -u -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "dev": "node src/dev_server.js 4173",
     "build": "python src/assemble.py"
   }
 }
