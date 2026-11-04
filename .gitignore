@@ -1,1 +1,8 @@
-.vercel
+VOICE-website/
+node_modules/
+.vercel/
+.system_generated/
+__pycache__/
+*.pyc
+.venv/
+*.tmp
