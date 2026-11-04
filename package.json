@@ -1,0 +1,10 @@
+{
+  "name": "voice-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VOICE website and immersive video hero",
+  "scripts": {
+    "dev": "python -u -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "build": "python src/assemble.py"
+  }
+}

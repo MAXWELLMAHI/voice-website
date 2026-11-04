@@ -1,27 +1,57 @@
-# VOICE — Built in the Noise.
+# VOICE website
 
-The hero of the Sleep Well recreation now uses the complete IMG_7508.MP4 clip supplied by the user, with its own audio. The original cream moon loading animation is restored. The centered VOICE heading and Built in the Noise. tagline are displayed over the hero. Selecting Enter Site starts the clip with sound. A side button mutes and unmutes the video; previous ambient tracks are muted.
+This folder contains the complete current website, its assets, and editable source code. The hero uses IMG_7508.MP4 with its audio, the centered VOICE heading and Built in the Noise. tagline, the original moon loader, and a sound toggle.
 
-The picture's existing black borders were removed. The full 55.1-second timeline and its sound are preserved in a 1280×720, 30 fps H.264 / AAC version. The video remains the visual scene, with gentle curved perspective, mouse parallax, and scroll zoom. No additional city models or story chapter are added.
+## Open the website locally
 
-## Local preview
+Run `npm run dev`, then open http://127.0.0.1:4173/ in your browser. Keep the terminal open while using the preview; Ctrl+C stops it. No npm installation step is needed. Node.js/npm and Python 3 must be available.
+
+You can also double-click `start-preview.cmd` to start the same Python preview without npm.
+
+You can also run this command from this folder:
 
 ```sh
-python -m http.server 4173 --directory dist
+python -m http.server 4173 --bind 127.0.0.1 --directory dist
 ```
 
-Open http://localhost:4173. The integrated page continues into the original lower sections. Their visual animation runtime and designer credits are retained.
+## Where the code lives
 
-## Standalone hero
+| Path | Contents |
+| --- | --- |
+| `dist/index.html` | Complete website, including the original lower sections |
+| `dist/voice-hero.html` | Standalone hero with its video, poster and fonts embedded |
+| `dist/assets/` | Stylesheets, animation JavaScript, images, audio and decorative clips |
+| `dist/assets/site-typography.css` | Current site-wide font definitions and role mappings |
+| `dist/assets/fonts/` | Cormorant SC, ABeeZee and Borel fonts and their OFL licenses |
+| `dist/models/` | 3D models used by the lower sections |
+| `src/hero-simple.template.html` | Editable hero markup, CSS and Three.js / GSAP code |
+| `src/original-index.html` | Base markup for the complete website |
+| `src/assemble.py` | Builds the current hero and integrates it into the complete website |
+| `src/prepare_fonts.py` | Downloads the font files and updates site-wide typography rules |
+| `src/font-faces.css` | Font-face definitions used when embedding fonts into the hero |
+| `src/media/` | Web-ready copy of the latest supplied video, with audio, and its poster |
+| `.openai/hosting.json` | Existing private Sites project identity and static hosting configuration |
 
-`dist/voice-hero.html` is a single HTML file with the video and poster embedded. It uses pinned Three.js 0.128.0, GSAP 3.12.5 and ScrollTrigger 3.12.5 from jsDelivr, plus Google Fonts. Open through an HTTP server for best compatibility. Playback with sound begins after the user's Enter Site click, as required by browser autoplay rules. Pixel ratio is capped at 2 and at 1.5 on mobile. Offscreen rendering and video playback pause when the hero leaves view.
+## Make changes
 
-The original site's separate note-panel film remains an external HLS dependency; it is unrelated to this hero video. The available legacy site runtime is the published JavaScript bundle, not the original author's development project.
+Edit `src/hero-simple.template.html` for hero content, styles and animations. Edit `src/original-index.html` for the lower sections. Run `npm run build` after source changes, or double-click `rebuild.cmd`. The equivalent Python command is:
 
-## Site-wide typography
+```sh
+python src/assemble.py
+```
 
-- Cormorant SC: hero title, chapter headlines and dramatic display statements.
-- ABeeZee: paragraphs, descriptions, navigation, interfaces and project details.
-- Borel: handwritten annotations, the hero footer note and small illustrated notes.
+Reload the local preview to see changes. Rebuilding uses the bundled assets and needs no package installation. To change typography roles, edit `src/prepare_fonts.py` and run it before rebuilding; that font refresh contacts Google Fonts.
 
-The font files are served locally in the integrated site and embedded in the standalone hero. Their OFL licenses are in dist/assets/fonts/. Fonts embedded within the supplied film itself are part of the footage and remain intact.
+Cormorant SC is used for headings and display statements, ABeeZee for body text and interfaces, and Borel for handwritten notes. The video retains its full 55.1-second timeline and audio; only its existing black borders were cropped for the web version. The original large recording remains in Downloads.
+
+## Dependencies and source notes
+
+The hero loads pinned Three.js r128 and GSAP / ScrollTrigger 3.12.5 from jsDelivr. The integrated site serves its fonts locally. The original site's separate note-panel film is an external HLS dependency. Internet access is needed for those external dependencies.
+
+The original lower-section runtime is included as its published JavaScript bundle, with its existing credits. The original author's unbundled development project is not available. Local Git history, credentials, temporary experiments, and the portable Blender installation are excluded from this folder.
+
+## Mumbai alley illusion
+
+The previous rotating tunnel/pill scene now uses the supplied life in mumbai (1).jpg illustration. The original 640×960 JPEG is copied byte-for-byte to `src/media/life-in-mumbai.jpg` and `dist/assets/mumbai/life-in-mumbai.jpg`. The main image is fitted near its native resolution; a soft ambient backdrop fills wide screens.
+
+`src/mumbai-alley.template.html` contains the image's perspective geometry, restrained mouse parallax, dolly zoom, and three scroll captions. The geometry compensates for perspective so the neutral view matches the image. `src/build_alley.py` integrates this scene into the full website when you run `npm run build`. Reduced-motion settings show a stable image. The original illustration is retained; no AI redrawing or destructive image processing is applied.
