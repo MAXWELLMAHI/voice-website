@@ -1,39 +1,102 @@
-<div class="project-wave-stage" id="voice-projects" aria-label="A vertical timeline of my journey and projects">
+<div class="project-wave-stage" id="voice-projects" aria-label="A musical score and interactive wave of my journey and projects">
   <div class="wave-paper" aria-hidden="true"></div>
+
+  <!-- Header & Floating Information HUD -->
   <header class="wave-header">
-    <div class="wave-eyebrow">02 <span>—</span> JOURNEY &amp; SELECTED WORK</div>
-    <div class="wave-header-title-wrap">
-      <h2>My work,<br>in motion.</h2>
-      <div class="wave-sound-equalizer" aria-label="Sound wave visualizer" role="img">
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
+    <div class="wave-header-top">
+      <div class="wave-eyebrow">02 <span>—</span> JOURNEY &amp; SELECTED WORK</div>
+      <div class="wave-score-meta">
+        <span class="score-meta-item">SCORE IN G</span>
+        <span class="score-meta-divider">·</span>
+        <span class="score-meta-item">__PROJECT_COUNT__ MOVEMENTS</span>
+        <span class="score-meta-divider">·</span>
+        <span class="score-meta-item">2023 — 2026</span>
+      </div>
+      <a class="wave-contact-shortcut" href="#contact">Contact ↗</a>
+    </div>
+
+    <div class="wave-header-row">
+      <div class="wave-title-wrap">
+        <h2>My work,<br>in motion.</h2>
+        <p class="wave-handwritten">A timeline score, in my own voice.</p>
+      </div>
+
+      <!-- Floating Project Info HUD (Shares project info on hover & scroll) -->
+      <aside class="wave-active-info-hud" id="wave-active-hud" aria-live="polite">
+        <div class="hud-top">
+          <span class="hud-index" id="hud-index">01 / __PROJECT_COUNT__</span>
+          <span class="hud-kicker" id="hud-kicker">2023 · The beginning</span>
+        </div>
+        <h3 class="hud-title" id="hud-title">Engineering studies.</h3>
+        <p class="hud-summary" id="hud-summary">I began engineering in 2023. This is where my timeline starts.</p>
+        <div class="hud-work-tags" id="hud-work-tags">
+          <span class="hud-tag">Engineering</span>
+          <span class="hud-tag">Learning</span>
+          <span class="hud-tag">Exploring</span>
+        </div>
+        <button class="hud-open-btn" id="hud-open-btn" type="button">
+          Open project story <span aria-hidden="true">↗</span>
+        </button>
+      </aside>
+    </div>
+  </header>
+
+  <!-- Sticky Musical Score Viewport -->
+  <div class="wave-sticky-viewport" id="wave-sticky-viewport">
+    <!-- 7 Horizontal Staff Lines -->
+    <div class="wave-staff-lines" aria-hidden="true">
+      <div class="staff-line" style="--l:0"></div>
+      <div class="staff-line" style="--l:1"></div>
+      <div class="staff-line" style="--l:2"></div>
+      <div class="staff-line" style="--l:3"></div>
+      <div class="staff-line" style="--l:4"></div>
+      <div class="staff-line" style="--l:5"></div>
+      <div class="staff-line" style="--l:6"></div>
+      <div class="staff-clef-symbol" aria-hidden="true">𝄞</div>
+    </div>
+
+    <!-- Vertical Playhead Line -->
+    <div class="wave-playhead" id="wave-playhead" aria-hidden="true">
+      <div class="playhead-node playhead-top"><span class="playhead-track-label" id="playhead-label">TRACK 01</span></div>
+      <div class="playhead-stem"></div>
+      <div class="playhead-node playhead-bottom"></div>
+    </div>
+
+    <!-- Horizontal Project Track -->
+    <div class="wave-score-track-container" id="wave-score-container">
+      <ol class="wave-score-track" id="wave-score-track">
+        __WAVE_PROJECT_ROWS__
+      </ol>
+    </div>
+
+    <!-- Bottom Progress & Legend -->
+    <div class="wave-score-footer" aria-hidden="true">
+      <div class="wave-score-legend">
+        <span>Hover or click any project to explore</span>
+        <span class="legend-dot">·</span>
+        <span>Scroll to move playhead</span>
+      </div>
+      <div class="wave-score-progress-track">
+        <span class="wave-score-progress-bar" id="wave-progress-fill"></span>
       </div>
     </div>
-    <p class="wave-handwritten">A timeline, in my own voice.</p>
-    <div class="wave-preview-label">Images to come</div>
-    <a class="wave-contact-shortcut" href="#contact">Contact ↗</a>
-  </header>
-  <div class="wave-timeline" id="wave-timeline">
-    <svg class="wave-thread" aria-hidden="true" preserveAspectRatio="none"><path id="wave-thread-path" fill="none"/></svg>
-    <div class="wave-origin" data-wave-origin><span class="wave-origin-dot" aria-hidden="true"></span><div><span class="wave-origin-kicker">THE BEGINNING</span><h3>2023.</h3><p>Engineering. Then, everything that followed.</p></div></div>
-    <ol class="wave-project-stack">__WAVE_PROJECT_ROWS__</ol>
-    <div class="wave-timeline-end"><span aria-hidden="true">↓</span><p>The next chapter starts with a conversation.</p></div>
   </div>
-  <aside class="wave-info" id="wave-info" aria-hidden="true"><div class="wave-info-index" id="wave-info-index">01 / PROJECT</div><h3 id="wave-info-title"></h3><div class="wave-info-subheading" id="wave-info-subheading"></div><p id="wave-info-summary"></p><div class="wave-info-work" id="wave-info-work"></div><span class="wave-info-link">Open project <span aria-hidden="true">↗</span></span></aside>
-  <div class="wave-scroll-marker" aria-hidden="true"><span id="wave-current-step">00</span><span class="wave-scroll-track"><span id="wave-scroll-fill"></span></span><span>__PROJECT_COUNT__</span></div>
+
+  <!-- Interactive Project Detail Drawer / Modal -->
+  <dialog class="wave-project-drawer" id="wave-project-drawer" aria-labelledby="drawer-title" aria-modal="true">
+    <div class="drawer-inner">
+      <button class="drawer-close" id="drawer-close" type="button" aria-label="Close project modal">✕</button>
+      <div class="drawer-header">
+        <div class="drawer-meta"><span id="drawer-index">01</span> · <span id="drawer-subheading">2023 · The beginning</span></div>
+        <h2 id="drawer-title">Engineering studies.</h2>
+        <p class="drawer-summary" id="drawer-summary">I began engineering in 2023. This is where my timeline starts.</p>
+        <div class="drawer-work" id="drawer-work"></div>
+      </div>
+      <div class="drawer-gallery" id="drawer-gallery"></div>
+      <div class="drawer-footer">
+        <a class="drawer-full-link" id="drawer-full-link" href="#">Open full project page ↗</a>
+      </div>
+    </div>
+  </dialog>
 </div>
 <script type="application/json" id="project-wave-data">__WAVE_DATA__</script>
