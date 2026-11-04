@@ -1,6 +1,6 @@
-# VOICE — Built in the Noise.
+# Mumbai Chawl Edition
 
-The hero of the Sleep Well recreation now uses the complete IMG_7507.MP4 clip supplied by the user, with its own audio. The original cream moon loading animation is restored. Selecting Enter Site starts the clip with sound. A side button mutes and unmutes the video; previous ambient tracks are muted.
+The hero of the Sleep Well recreation now uses the complete IMG_7507.MP4 clip supplied by the user, with its own audio. The original cream moon loading animation is restored. The VOICE heading, logo and tagline have been removed from the hero. Selecting Enter Site starts the clip with sound. A side button mutes and unmutes the video; previous ambient tracks are muted.
 
 The picture's existing black borders were removed. The full 55.53-second timeline and its sound are preserved in a 1280×720, 30 fps H.264 / AAC version. The video remains the visual scene, with gentle curved perspective, mouse parallax, and scroll zoom. No additional city models or story chapter are added.
 
